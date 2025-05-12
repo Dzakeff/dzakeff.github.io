@@ -17,14 +17,20 @@ document.addEventListener('DOMContentLoaded', function() {
         let current = '';
         const sections = document.querySelectorAll('section');
         
-        sections.forEach(section => {
+        const scrollPos = window.scrollY + window.innerHeight;
+
+        sections.forEach((section, index) => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
-            
-            if (pageYOffset >= (sectionTop - 200)) {
+
+            if (scrollPos >= document.body.scrollHeight - 10) {
+                // Sudah di bawah halaman → aktifkan #contact
+                current = 'contact';
+            } else if (window.scrollY >= (sectionTop - 200)) {
                 current = section.getAttribute('id');
             }
         });
+
         
         navLinks.forEach(link => {
             link.classList.remove('active');
