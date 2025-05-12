@@ -162,7 +162,9 @@ img {
 .logo a {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--primary-color);
+    /* color: var(--primary-color); */
+    display: flex;
+    align-items: center;
 }
 
 .nav-menu {
