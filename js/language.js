@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     //     'Communicated directly with the client to ensure the proposed network solution aligned with their needs and expectations.'
                     // ],
                     // Technical Support Staff
+                    [],
+                    // Technical Support Intern
                     [
                         'Conducted site surveys to assess client network requirements and infrastructure conditions.',
                         'Installed and configured network devices such as routers, switches, and access points.',
