@@ -7,28 +7,23 @@ document.addEventListener('DOMContentLoaded', function() {
             hero: {
                 downloadCV: 'My CV',
                 contactMe: 'Contact Me',
-                cvPath: '/Documents/CV Muhamad Dzakwan Ar Efendi - English (Cyber).pdf'  // English CV path
+                cvPath: '/Documents/CV Muhamad Dzakwan Ar Efendi - English (Cyber).pdf'
             },
             profile: {
                 title: 'About Me',
                 greeting: 'Hi, I\'m Muhamad Dzakwan Ar Efendi',
                 description: 'I am an 18-year-old fresh graduate from Wikrama Bogor Vocational High School in 2025, majoring in Computer Network Engineering and Telecommunications. I have completed an internship for six months at PT Maxindo Mitra Solusi as a Technical Support, where I was responsible for needs assessment, installation, troubleshooting, and network maintenance. I am passionate about building a career in cyber security and system administration.',
                 location: 'Location',
-                email: 'Email'
+                email: 'Email',
+                locationValue: 'Bogor, Indonesia'
             },
             experience: {
                 title: 'Work Experience',
                 description: 'My professional journey and career highlights',
                 present: 'Present',
+                locations: ['West Jakarta, Indonesia', 'West Jakarta, Indonesia'], // For each experience
                 achievements: [
-                    // IT Infrastructure Consultant
-                    // [
-                    //     'Designed network topology from scratch based on the client\'s operational requirements.',
-                    //     'Analyzed existing network devices to evaluate their effectiveness and efficiency.',
-                    //     'Conducted research and recommended new network equipment (such as switches, routers, and access points) that met the client\'s technical specifications and budget.',
-                    //     'Communicated directly with the client to ensure the proposed network solution aligned with their needs and expectations.'
-                    // ],
-                    // Technical Support Staff
+                    // Technical Support Staff (Current Position) - No achievements listed yet
                     [],
                     // Technical Support Intern
                     [
@@ -86,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
             footer: {
                 rights: 'All rights reserved.'
             },
-
             comingSoon: {
                 title: 'Coming Soon',
                 description: 'New exciting features and content are on the way!',
@@ -94,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 text: 'This section is currently under development. Check back soon for updates.',
                 features: ['New Projects', 'More Certificates', 'Blog Posts']
             }
-
         },
         id: {
             siteTitle: "Portofolio Saya",
@@ -102,28 +95,25 @@ document.addEventListener('DOMContentLoaded', function() {
             hero: {
                 downloadCV: 'CV Saya',
                 contactMe: 'Hubungi Saya',
-                cvPath: '/Documents/CV Muhamad Dzakwan Ar Efendi - Indonesia (Cyber).pdf'  // Indonesian CV path
+                cvPath: '/Documents/CV Muhamad Dzakwan Ar Efendi - Indonesia (Cyber).pdf'
             },
             profile: {
                 title: 'Tentang Saya',
                 greeting: 'Hai, Saya Muhamad Dzakwan Ar Efendi',
                 description: 'Saya adalah lulusan SMK Wikrama Bogor tahun 2025 berusia 18 tahun, jurusan Teknik Komputer Jaringan dan Telekomunikasi. Saya telah menyelesaikan magang selama enam bulan di PT Maxindo Mitra Solusi sebagai Technical Support, di mana saya bertanggung jawab untuk penilaian kebutuhan, instalasi, troubleshooting, dan pemeliharaan jaringan. Saya bersemangat untuk membangun karir di bidang cyber security dan administrasi sistem.',
                 location: 'Lokasi',
-                email: 'Email'
+                email: 'Email',
+                locationValue: 'Bogor, Indonesia'
             },
             experience: {
                 title: 'Pengalaman Kerja',
                 description: 'Perjalanan profesional dan pencapaian karir saya',
                 present: 'Sekarang',
+                locations: ['Jakarta Barat, Indonesia', 'Jakarta Barat, Indonesia'], // For each experience
                 achievements: [
-                    // IT Infrastructure Consultant
-                    // [
-                    //     'Merancang topologi jaringan dari awal berdasarkan kebutuhan operasional klien.',
-                    //     'Menganalisis perangkat jaringan yang ada untuk mengevaluasi efektivitas dan efisiensinya.',
-                    //     'Melakukan riset dan merekomendasikan peralatan jaringan baru (seperti switch, router, dan access point) yang memenuhi spesifikasi teknis dan anggaran klien.',
-                    //     'Berkomunikasi langsung dengan klien untuk memastikan solusi jaringan yang diusulkan sesuai dengan kebutuhan dan harapan mereka.'
-                    // ],
-                    // Technical Support Staff
+                    // Technical Support Staff (Posisi Saat Ini) - Belum ada pencapaian yang terdaftar
+                    [],
+                    // Technical Support Intern
                     [
                         'Melakukan survei lokasi untuk menilai kebutuhan jaringan klien dan kondisi infrastruktur.',
                         'Menginstal dan mengkonfigurasi perangkat jaringan seperti router, switch, dan access point.',
@@ -179,7 +169,6 @@ document.addEventListener('DOMContentLoaded', function() {
             footer: {
                 rights: 'Hak Cipta Dilindungi.'
             },
-
             comingSoon: {
                 title: 'Segera Hadir',
                 description: 'Fitur dan konten menarik baru sedang dalam perjalanan!',
@@ -210,11 +199,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to set language
     function setLanguage(lang) {
-         // Update website title
+        // Update website title
         document.getElementById('website-title').textContent = languages[lang].siteTitle;
-    
-        // Update navigation logo
-        // document.getElementById('nav-logo').textContent = languages[lang].logo;
 
         // Update language toggle icon/text
         languageToggle.innerHTML = lang === 'en' ? '<i class="fas fa-language"></i> ID' : '<i class="fas fa-language"></i> EN';
@@ -222,8 +208,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update HTML lang attribute
         document.documentElement.lang = lang;
         
-        // Update CV download link
+        // Update CV download link with download attribute
+        const cvFileName = lang === 'en' ? 
+            'CV Muhamad Dzakwan Ar Efendi - English (Cyber).pdf' : 
+            'CV Muhamad Dzakwan Ar Efendi - Indonesia (Cyber).pdf';
+        
         cvDownloadBtn.setAttribute('href', languages[lang].hero.cvPath);
+        cvDownloadBtn.setAttribute('download', cvFileName);
         
         // Update navigation
         const navLinks = document.querySelectorAll('.nav-menu .nav-link:not(.theme-toggle):not(.language-toggle)');
@@ -244,9 +235,20 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.info-item h4')[0].textContent = languages[lang].profile.location;
         document.querySelectorAll('.info-item h4')[1].textContent = languages[lang].profile.email;
         
+        // Update profile location value
+        document.querySelectorAll('.info-item p')[0].textContent = languages[lang].profile.locationValue;
+        
         // Update experience section
         document.querySelector('#experience .section-header h2').textContent = languages[lang].experience.title;
         document.querySelector('#experience .section-description').textContent = languages[lang].experience.description;
+        
+        // Update experience locations
+        const experienceLocations = document.querySelectorAll('.experience-location');
+        experienceLocations.forEach((location, index) => {
+            if (index < languages[lang].experience.locations.length) {
+                location.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${languages[lang].experience.locations[index]}`;
+            }
+        });
         
         // Update "Present" text in timeline
         const timelineDates = document.querySelectorAll('.timeline-date span');
@@ -259,10 +261,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Update experience achievements
+        // Update experience achievements - Fixed to handle missing achievements
         const experienceCards = document.querySelectorAll('.experience-card');
         experienceCards.forEach((card, cardIndex) => {
-            if (cardIndex < languages[lang].experience.achievements.length) {
+            // Check if achievements exist for this card index
+            if (cardIndex < languages[lang].experience.achievements.length && 
+                languages[lang].experience.achievements[cardIndex].length > 0) {
+                
                 const achievements = card.querySelectorAll('.experience-achievements li');
                 achievements.forEach((achievement, achievementIndex) => {
                     if (achievementIndex < languages[lang].experience.achievements[cardIndex].length) {
