@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Language data
     const languages = {
         en: {
-            siteTitle: "My Portfolio",
+            siteTitle: "Dzakeff - Portfolio",
             nav: ['Profile', 'Experience', 'Projects', 'Certificates', 'Contact'],
             hero: {
                 downloadCV: 'My CV',
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         id: {
-            siteTitle: "Portofolio Saya",
+            siteTitle: "Dzakwan - Portofolio",
             nav: ['Profil', 'Pengalaman', 'Proyek', 'Sertifikat', 'Kontak'],
             hero: {
                 downloadCV: 'CV Saya',
