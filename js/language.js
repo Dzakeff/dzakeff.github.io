@@ -21,8 +21,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Work Experience',
                 description: 'My professional journey and career highlights',
                 present: 'Present',
-                locations: ['West Jakarta, Indonesia', 'West Jakarta, Indonesia'], // For each experience
+                locations: ['Indonesia', 'West Jakarta, Indonesia', 'West Jakarta, Indonesia'], // For each experience
                 achievements: [
+                    // Bootcamp Student Cyber Security
+                    [
+                        'Participated in the IDN Cyber Security bootcamp for 10 weeks with intensive learning (theory & practice) on Linux, pentesting, web & mobile security, SOC labs, and cloud security. Worked on projects and simulated real attacks every week.'
+                    ],
                     // Technical Support Staff (Current Position) - No achievements listed yet
                     [],
                     // Technical Support Intern
@@ -109,8 +113,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Pengalaman Kerja',
                 description: 'Perjalanan profesional dan pencapaian karir saya',
                 present: 'Sekarang',
-                locations: ['Jakarta Barat, Indonesia', 'Jakarta Barat, Indonesia'], // For each experience
+                locations: ['Indonesia', 'Jakarta Barat, Indonesia', 'Jakarta Barat, Indonesia'], // For each experience
                 achievements: [
+                    // Bootcamp Student Cyber Security
+                    [
+                        'Mengikuti bootcamp Cyber Security IDN selama 10 minggu dengan pembelajaran intensif (teori & praktik) mengenai Linux, pentesting, keamanan web & mobile, SOC labs, dan cloud security. Mengerjakan proyek dan simulasi serangan nyata setiap minggunya.'
+                    ],
                     // Technical Support Staff (Posisi Saat Ini) - Belum ada pencapaian yang terdaftar
                     [],
                     // Technical Support Intern
