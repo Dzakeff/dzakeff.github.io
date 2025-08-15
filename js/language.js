@@ -21,14 +21,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Work Experience',
                 description: 'My professional journey and career highlights',
                 present: 'Present',
-                locations: ['Indonesia', 'West Jakarta, Indonesia', 'West Jakarta, Indonesia'], // For each experience
+                locations: ['West Jakarta, Indonesia','Indonesia', 'West Jakarta, Indonesia'], // For each experience
                 achievements: [
+                    // Technical Support Staff (Current Position) - No achievements listed yet
+                    [
+                        'Conducted site surveys to assess client network requirements and infrastructure conditions.',
+                        'Installed and configured network devices such as routers, switches, and access points.',
+                        'Performed troubleshooting on network issues, ensuring minimal downtime and service disruption.',
+                        'Provided routine maintenance and monitoring of network systems to maintain optimal performance.',
+                        'Documented technical issues and solutions to support knowledge sharing and future problem-solving.',
+                        'Assisted senior engineers in planning and deploying network infrastructure based on client specifications.',
+                        'Communicated with clients to explain technical problems and provide clear resolutions.'
+                    ],
                     // Bootcamp Student Cyber Security
                     [
                         'Participated in the IDN Cyber Security bootcamp for 10 weeks with intensive learning (theory & practice) on Linux, pentesting, web & mobile security, SOC labs, and cloud security. Worked on projects and simulated real attacks every week.'
                     ],
-                    // Technical Support Staff (Current Position) - No achievements listed yet
-                    [],
                     // Technical Support Intern
                     [
                         'Conducted site surveys to assess client network requirements and infrastructure conditions.',
@@ -113,14 +121,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Pengalaman Kerja',
                 description: 'Perjalanan profesional dan pencapaian karir saya',
                 present: 'Sekarang',
-                locations: ['Indonesia', 'Jakarta Barat, Indonesia', 'Jakarta Barat, Indonesia'], // For each experience
+                locations: ['Jakarta Barat, Indonesia','Indonesia', 'Jakarta Barat, Indonesia'], // For each experience
                 achievements: [
+                    // Technical Support Staff (Posisi Saat Ini) - Belum ada pencapaian yang terdaftar
+                    [
+                        'Melakukan survei lokasi untuk menilai kebutuhan jaringan klien dan kondisi infrastruktur.',
+                        'Menginstal dan mengkonfigurasi perangkat jaringan seperti router, switch, dan access point.',
+                        'Melakukan troubleshooting pada masalah jaringan, memastikan downtime dan gangguan layanan minimal.',
+                        'Menyediakan pemeliharaan rutin dan pemantauan sistem jaringan untuk menjaga kinerja optimal.',
+                        'Mendokumentasikan masalah teknis dan solusinya untuk mendukung berbagi pengetahuan dan pemecahan masalah di masa depan.',
+                        'Membantu insinyur senior dalam merencanakan dan menerapkan infrastruktur jaringan berdasarkan spesifikasi klien.',
+                        'Berkomunikasi dengan klien untuk menjelaskan masalah teknis dan memberikan solusi yang jelas.'
+                    ],
                     // Bootcamp Student Cyber Security
                     [
                         'Mengikuti bootcamp Cyber Security IDN selama 10 minggu dengan pembelajaran intensif (teori & praktik) mengenai Linux, pentesting, keamanan web & mobile, SOC labs, dan cloud security. Mengerjakan proyek dan simulasi serangan nyata setiap minggunya.'
                     ],
-                    // Technical Support Staff (Posisi Saat Ini) - Belum ada pencapaian yang terdaftar
-                    [],
                     // Technical Support Intern
                     [
                         'Melakukan survei lokasi untuk menilai kebutuhan jaringan klien dan kondisi infrastruktur.',
