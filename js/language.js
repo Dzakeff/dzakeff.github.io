@@ -1,348 +1,399 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Language data
-    const languages = {
-        en: {
-            siteTitle: "Dzakeff - Portfolio",
-            nav: ['Profile', 'Experience', 'Projects', 'Certificates', 'Contact'],
-            hero: {
-                downloadCV: 'My CV',
-                contactMe: 'Contact Me',
-                cvPath: '/Documents/CV Muhamad Dzakwan Ar Efendi - English (Cyber).pdf'
-            },
-            profile: {
-                title: 'About Me',
-                greeting: 'Hi, I\'m Muhamad Dzakwan Ar Efendi',
-                description: 'I am an 18-year-old fresh graduate from Wikrama Bogor Vocational High School in 2025, majoring in Computer Network Engineering and Telecommunications. I have completed an internship for six months at PT Maxindo Mitra Solusi as a Technical Support, where I was responsible for needs assessment, installation, troubleshooting, and network maintenance. I am passionate about building a career in cyber security and system administration.',
-                location: 'Location',
-                email: 'Email',
-                locationValue: 'Bogor, Indonesia'
-            },
-            experience: {
-                title: 'Work Experience',
-                description: 'My professional journey and career highlights',
-                present: 'Present',
-                locations: ['West Jakarta, Indonesia','Indonesia', 'West Jakarta, Indonesia'], // For each experience
-                achievements: [
-                    // Technical Support Staff (Current Position) - No achievements listed yet
-                    [
-                        'Conducted site surveys to assess client network requirements and infrastructure conditions.',
-                        'Installed and configured network devices such as routers, switches, and access points.',
-                        'Performed troubleshooting on network issues, ensuring minimal downtime and service disruption.',
-                        'Provided routine maintenance and monitoring of network systems to maintain optimal performance.',
-                        'Documented technical issues and solutions to support knowledge sharing and future problem-solving.',
-                        'Assisted senior engineers in planning and deploying network infrastructure based on client specifications.',
-                        'Communicated with clients to explain technical problems and provide clear resolutions.'
-                    ],
-                    // Bootcamp Student Cyber Security
-                    [
-                        'Participated in the IDN Cyber Security bootcamp for 10 weeks with intensive learning (theory & practice) on Linux, pentesting, web & mobile security, SOC labs, and cloud security. Worked on projects and simulated real attacks every week.'
-                    ],
-                    // Technical Support Intern
-                    [
-                        'Conducted site surveys to assess client network requirements and infrastructure conditions.',
-                        'Installed and configured network devices such as routers, switches, and access points.',
-                        'Performed troubleshooting on network issues, ensuring minimal downtime and service disruption.',
-                        'Provided routine maintenance and monitoring of network systems to maintain optimal performance.',
-                        'Documented technical issues and solutions to support knowledge sharing and future problem-solving.',
-                        'Assisted senior engineers in planning and deploying network infrastructure based on client specifications.',
-                        'Communicated with clients to explain technical problems and provide clear resolutions.'
-                    ]
-                ]
-            },
-            projects: {
-                title: 'My Projects',
-                description: 'A showcase of my recent work, personal projects, and contributions',
-                project: 'Project',
-                descriptions: [
-                    'Designed a network topology from scratch, evaluated existing devices, recommended new equipment, and coordinated directly with the client to ensure the solution met their needs.',
-                    'Implemented Snort IDS, ARP Poisoning (MITM), DMZ, USB mounting restrictions, password hardening, IPtables configuration, and Nmap scanning for network defense testing.',
-                    'Configured MikroTik and Cisco devices in PNETLab, including basic MikroTik setup and DMZ implementation to a secondary router.',
-                    'Configured a MikroTik router to integrate with AWS by assigning static DNS for AWS server IPs, and setting up hotspot, DHCP, and VLAN.',
-                    'Set up a small office network using two MikroTik routers with static routing, load balancing, OSPF, queue management, firewall, and hotspot.',
-                    'Implemented PPPoE and hotspot on MikroTik routers, and performed FO cable installation with OLT and ONT configuration.',
-                    'Built scalable infrastructure using ELB, Auto Scaling, RDS, Zabbix and Nagios for monitoring, and configured VPC and EC2 instances.',
-                    'Deployed a Linux server with LEMP stack, WordPress, SSH key authentication, mail server with webmail, virtual hosts, VoIP service, and additional services including Apache2, Nginx, HTTPS, Samba, IPtables NAT gateway, FTP, DNS, and DHCP.',
-                    'Simulated a network in Cisco Packet Tracer with configuration of routing between two routers, VLAN, server DHCP on router, server DNS, and server web.'
-                ]
-            },
-            certificates: {
-                title: 'Certificates',
-                description: 'Professional certifications and achievements I\'ve earned throughout my career',
-                descriptions: [
-                    'Certified in basic MikroTik network configuration, including routing, wireless, firewall, and network troubleshooting.',
-                    'Certified in basic MikroTik network configuration, including static routing, wireless, firewall, VLAN, hotspot and network troubleshooting.',
-                    'Knowledge of networking fundamentals, how devices communicate, cabling, network addressing and services, troubleshooting and support of endpoints.',
-                    'understanding of network monitoring and protection techniques, including the use of firewalls, cloud security, and cryptography, as well as familiarity with handling security alerts and implementing security governance.',
-                    'understanding Linux configurations, including use of DNS and DHCP server, MariaDB',
-                    'Foundational understanding of Networking such as IPV4, TCP/IP, and OSI Model.',
-                    'Certified in foundational networking concepts, including IP addressing, network protocols, and basic router/switch configuration.',
-                    'Trained in network simulation using PNETLab, focusing on network design, configuration, and troubleshooting in a virtual environment',
-                    'Studied ethical hacking, application and network exploitation, IoT security, penetration testing, and vulnerability assessment and scanning.',
-                    'Learned about the opportunities and challenges of AI, quantum computing, and cryptography.',
-                    'Gained knowledge of various types of viruses and malicious applications, including their forms and attack methods.',
-                    'Participated in the MikroTik Network Olympiad, demonstrating skills in network configuration using MikroTik RouterOS.',
-                    'Completed a basic Cisco course covering networking fundamentals, IP addressing, and introductory routing/switching.',
-                    'Completed a basic Cisco course covering networking fundamentals, IP addressing, and introductory routing/switching.'
-                ]
-            },
-            contact: {
-                title: 'Get In Touch',
-                description: 'Have a project in mind or want to collaborate? Feel free to reach out!',
-                contactMe: 'Contact Me'
-            },
-            footer: {
-                rights: 'All rights reserved.'
-            },
-            comingSoon: {
-                title: 'Coming Soon',
-                description: 'New exciting features and content are on the way!',
-                heading: 'We\'re working on something awesome!',
-                text: 'This section is currently under development. Check back soon for updates.',
-                features: ['New Projects', 'More Certificates', 'Blog Posts']
-            }
-        },
-        id: {
-            siteTitle: "Dzakwan - Portofolio",
-            nav: ['Profil', 'Pengalaman', 'Proyek', 'Sertifikat', 'Kontak'],
-            hero: {
-                downloadCV: 'CV Saya',
-                contactMe: 'Hubungi Saya',
-                cvPath: '/Documents/CV Muhamad Dzakwan Ar Efendi - Indonesia (Cyber).pdf'
-            },
-            profile: {
-                title: 'Tentang Saya',
-                greeting: 'Hai, Saya Muhamad Dzakwan Ar Efendi',
-                description: 'Saya adalah lulusan SMK Wikrama Bogor tahun 2025 berusia 18 tahun, jurusan Teknik Komputer Jaringan dan Telekomunikasi. Saya telah menyelesaikan magang selama enam bulan di PT Maxindo Mitra Solusi sebagai Technical Support, di mana saya bertanggung jawab untuk penilaian kebutuhan, instalasi, troubleshooting, dan pemeliharaan jaringan. Saya bersemangat untuk membangun karir di bidang cyber security dan administrasi sistem.',
-                location: 'Lokasi',
-                email: 'Email',
-                locationValue: 'Bogor, Indonesia'
-            },
-            experience: {
-                title: 'Pengalaman Kerja',
-                description: 'Perjalanan profesional dan pencapaian karir saya',
-                present: 'Sekarang',
-                locations: ['Jakarta Barat, Indonesia','Indonesia', 'Jakarta Barat, Indonesia'], // For each experience
-                achievements: [
-                    // Technical Support Staff (Posisi Saat Ini) - Belum ada pencapaian yang terdaftar
-                    [
-                        'Melakukan survei lokasi untuk menilai kebutuhan jaringan klien dan kondisi infrastruktur.',
-                        'Menginstal dan mengkonfigurasi perangkat jaringan seperti router, switch, dan access point.',
-                        'Melakukan troubleshooting pada masalah jaringan, memastikan downtime dan gangguan layanan minimal.',
-                        'Menyediakan pemeliharaan rutin dan pemantauan sistem jaringan untuk menjaga kinerja optimal.',
-                        'Mendokumentasikan masalah teknis dan solusinya untuk mendukung berbagi pengetahuan dan pemecahan masalah di masa depan.',
-                        'Membantu insinyur senior dalam merencanakan dan menerapkan infrastruktur jaringan berdasarkan spesifikasi klien.',
-                        'Berkomunikasi dengan klien untuk menjelaskan masalah teknis dan memberikan solusi yang jelas.'
-                    ],
-                    // Bootcamp Student Cyber Security
-                    [
-                        'Mengikuti bootcamp Cyber Security IDN selama 10 minggu dengan pembelajaran intensif (teori & praktik) mengenai Linux, pentesting, keamanan web & mobile, SOC labs, dan cloud security. Mengerjakan proyek dan simulasi serangan nyata setiap minggunya.'
-                    ],
-                    // Technical Support Intern
-                    [
-                        'Melakukan survei lokasi untuk menilai kebutuhan jaringan klien dan kondisi infrastruktur.',
-                        'Menginstal dan mengkonfigurasi perangkat jaringan seperti router, switch, dan access point.',
-                        'Melakukan troubleshooting pada masalah jaringan, memastikan downtime dan gangguan layanan minimal.',
-                        'Menyediakan pemeliharaan rutin dan pemantauan sistem jaringan untuk menjaga kinerja optimal.',
-                        'Mendokumentasikan masalah teknis dan solusinya untuk mendukung berbagi pengetahuan dan pemecahan masalah di masa depan.',
-                        'Membantu insinyur senior dalam merencanakan dan menerapkan infrastruktur jaringan berdasarkan spesifikasi klien.',
-                        'Berkomunikasi dengan klien untuk menjelaskan masalah teknis dan memberikan solusi yang jelas.'
-                    ]
-                ]
-            },
-            projects: {
-                title: 'Proyek Saya',
-                description: 'Tampilan karya terbaru, proyek pribadi, dan kontribusi saya',
-                project: 'Proyek',
-                descriptions: [
-                    'Merancang topologi jaringan dari awal, mengevaluasi perangkat yang ada, merekomendasikan perangkat baru, dan berkoordinasi langsung dengan klien untuk memastikan solusi sesuai kebutuhan.',
-                    'Mengimplementasikan Snort IDS, ARP Poisoning (MITM), DMZ, pembatasan pemasangan USB, penguatan kata sandi, konfigurasi IPtables, dan pemindaian Nmap untuk pengujian pertahanan jaringan.',
-                    'Mengkonfigurasi perangkat MikroTik dan Cisco di PNETLab, termasuk pengaturan dasar MikroTik dan implementasi DMZ ke router sekunder.',
-                    'Mengkonfigurasi router MikroTik untuk terintegrasi dengan AWS dengan menetapkan DNS statis untuk IP server AWS, dan mengatur hotspot, DHCP, dan VLAN.',
-                    'Menyiapkan jaringan kantor kecil menggunakan dua router MikroTik dengan static routing, load balancing, OSPF, manajemen antrian, firewall, dan hotspot.',
-                    'Mengimplementasikan PPPoE dan hotspot pada router MikroTik, dan melakukan instalasi kabel FO dengan konfigurasi OLT dan ONT.',
-                    'Membangun infrastruktur yang dapat diskalakan menggunakan ELB, Auto Scaling, RDS, Zabbix dan Nagios untuk pemantauan, dan mengkonfigurasi VPC dan instans EC2.',
-                    'Menerapkan server Linux dengan LEMP stack, WordPress, autentikasi kunci SSH, mail server dengan webmail, virtual host, layanan VoIP, dan layanan tambahan termasuk Apache2, Nginx, HTTPS, Samba, gateway NAT IPtables, FTP, DNS, dan DHCP.',
-                    'Mensimulasikan jaringan di Cisco Packet Tracer dengan konfigurasi routing antara dua router, VLAN, server DHCP pada router, server DNS, dan server web.'
-                ]
-            },
-            certificates: {
-                title: 'Sertifikat',
-                description: 'Sertifikasi profesional dan pencapaian yang telah saya peroleh sepanjang karir saya',
-                descriptions: [
-                    'Tersertifikasi dalam konfigurasi jaringan MikroTik dasar, termasuk routing, wireless, firewall, dan troubleshooting jaringan.',
-                    'Tersertifikasi dalam konfigurasi jaringan MikroTik dasar, termasuk static routing, wireless, firewall, VLAN, hotspot dan troubleshooting jaringan.',
-                    'Pengetahuan tentang dasar-dasar jaringan, bagaimana perangkat berkomunikasi, pengkabelan, pengalamatan jaringan dan layanan, troubleshooting dan dukungan endpoint.',
-                    'Pemahaman tentang teknik pemantauan dan perlindungan jaringan, termasuk penggunaan firewall, keamanan cloud, dan kriptografi, serta keakraban dengan penanganan peringatan keamanan dan implementasi tata kelola keamanan.',
-                    'Pemahaman konfigurasi Linux, termasuk penggunaan server DNS dan DHCP, MariaDB',
-                    'Pemahaman dasar tentang Jaringan seperti IPV4, TCP/IP, dan Model OSI.',
-                    'Tersertifikasi dalam konsep jaringan dasar, termasuk pengalamatan IP, protokol jaringan, dan konfigurasi router/switch dasar.',
-                    'Terlatih dalam simulasi jaringan menggunakan PNETLab, berfokus pada desain jaringan, konfigurasi, dan troubleshooting dalam lingkungan virtual',
-                    'Mempelajari ethical hacking, eksploitasi aplikasi dan jaringan, keamanan IoT, penetration testing, dan penilaian kerentanan dan pemindaian.',
-                    'Mempelajari peluang dan tantangan AI, komputasi kuantum, dan kriptografi.',
-                    'Mengenal berbagai jenis virus dan aplikasi berbahaya, termasuk bentuk dan metode serangannya.',
-                    'Berpartisipasi dalam Olimpiade Jaringan MikroTik, mendemonstrasikan keterampilan dalam konfigurasi jaringan menggunakan MikroTik RouterOS.',
-                    'Menyelesaikan kursus dasar Cisco, mencakup dasar-dasar jaringan, pengalamatan IP, dan router/switch pengantar.',
-                    'Menyelesaikan kursus dasar Cisco, mencakup dasar-dasar jaringan, pengalamatan IP, dan router/switch pengantar.'
-                ]
-            },
-            contact: {
-                title: 'Hubungi Saya',
-                description: 'Punya proyek dalam pikiran atau ingin berkolaborasi? Jangan ragu untuk menghubungi!',
-                contactMe: 'Hubungi Saya'
-            },
-            footer: {
-                rights: 'Hak Cipta Dilindungi.'
-            },
-            comingSoon: {
-                title: 'Segera Hadir',
-                description: 'Fitur dan konten menarik baru sedang dalam perjalanan!',
-                heading: 'Kami sedang mengerjakan sesuatu yang keren!',
-                text: 'Bagian ini sedang dalam pengembangan. Periksa kembali nanti untuk pembaruan.',
-                features: ['Proyek Baru', 'Lebih Banyak Sertifikat', 'Artikel Blog']
-            }
-        }
-    };
+document.addEventListener("DOMContentLoaded", () => {
+  // Language data
+  const languages = {
+    en: {
+      siteTitle: "Dzakeff - Portfolio",
+      nav: ["Profile", "Experience", "Projects", "Certificates", "Contact"],
+      hero: {
+        downloadCV: "My CV",
+        contactMe: "Contact Me",
+        cvPath: "/Documents/CV Muhamad Dzakwan Ar Efendi - English (Cyber).pdf",
+      },
+      profile: {
+        title: "About Me",
+        greeting: "Hi, I'm Muhamad Dzakwan Ar Efendi",
+        description:
+          "I am an 18-year-old fresh graduate from Wikrama Bogor Vocational High School in 2025, majoring in Computer Network Engineering and Telecommunications. I have completed an internship for six months at PT Maxindo Mitra Solusi as a Technical Support, where I was responsible for needs assessment, installation, troubleshooting, and network maintenance. I am passionate about building a career in cyber security and system administration.",
+        location: "Location",
+        email: "Email",
+        locationValue: "Bogor, Indonesia",
+      },
+      experience: {
+        title: "Work Experience",
+        description: "My professional journey and career highlights",
+        present: "Present",
+        locations: ["West Jakarta, Indonesia", "Indonesia", "West Jakarta, Indonesia"], // For each experience
+        achievements: [
+          // Technical Support Staff (Current Position)
+          [
+            "Conducted site surveys to assess client network requirements and infrastructure conditions.",
+            "Installed and configured network devices such as routers, switches, and access points.",
+            "Performed troubleshooting on network issues, ensuring minimal downtime and service disruption.",
+            "Provided routine maintenance and monitoring of network systems to maintain optimal performance.",
+            "Documented technical issues and solutions to support knowledge sharing and future problem-solving.",
+            "Assisted senior engineers in planning and deploying network infrastructure based on client specifications.",
+            "Communicated with clients to explain technical problems and provide clear resolutions.",
+          ],
+          // Bootcamp Student Cyber Security
+          [
+            "Participated in the IDN Cyber Security bootcamp for 10 weeks with intensive learning (theory & practice) on Linux, pentesting, web & mobile security, SOC labs, and cloud security. Worked on projects and simulated real attacks every week.",
+          ],
+          // Technical Support Intern
+          [
+            "Conducted site surveys to assess client network requirements and infrastructure conditions.",
+            "Installed and configured network devices such as routers, switches, and access points.",
+            "Performed troubleshooting on network issues, ensuring minimal downtime and service disruption.",
+            "Provided routine maintenance and monitoring of network systems to maintain optimal performance.",
+            "Documented technical issues and solutions to support knowledge sharing and future problem-solving.",
+            "Assisted senior engineers in planning and deploying network infrastructure based on client specifications.",
+            "Communicated with clients to explain technical problems and provide clear resolutions.",
+          ],
+        ],
+      },
+      projects: {
+        title: "My Projects",
+        description: "A showcase of my recent work, personal projects, and contributions",
+        project: "Project",
+        filterAll: "All Projects",
+        filterMaxindo: "PT Maxindo Mitra Solusi",
+        filterWikrama: "Wikrama Vocational School",
+        categoryMaxindo: "Associated with PT Maxindo Mitra Solusi",
+        categoryWikrama: "Associated with Wikrama Vocational School",
+        descriptions: [
+          "Implemented on-site network infrastructure installation at PKU Muhammadiyah Hospital Yogyakarta, including device configuration and the design of network layout and topology to support reliable and efficient hospital connectivity.",
+          "Upgraded network infrastructure at Citadines Connect Airport Jakarta Hotel, including device refresh, addition of access points and switches, to enhance coverage, capacity, and overall network performance.",
+          "Upgraded network infrastructure at Brits Hotel Puri Indah, including device refresh, addition of access points and switches, to enhance coverage, capacity, and overall network performance.",
+          "Designed a network topology from scratch, evaluated existing devices, recommended new equipment, and coordinated directly with the client to ensure the solution met their needs.",
+          "Implemented Snort IDS, ARP Poisoning (MITM), DMZ, USB mounting restrictions, password hardening, IPtables configuration, and Nmap scanning for network defense testing.",
+          "Configured MikroTik and Cisco devices in PNETLab, including basic MikroTik setup and DMZ implementation to a secondary router.",
+          "Configured a MikroTik router to integrate with AWS by assigning static DNS for AWS server IPs, and setting up hotspot, DHCP, and VLAN.",
+          "Set up a small office network using two MikroTik routers with static routing, load balancing, OSPF, queue management, firewall, and hotspot.",
+          "Implemented PPPoE and hotspot on MikroTik routers, and performed FO cable installation with OLT and ONT configuration.",
+          "Built scalable infrastructure using ELB, Auto Scaling, RDS, Zabbix and Nagios for monitoring, and configured VPC and EC2 instances.",
+          "Deployed a Linux server with LEMP stack, WordPress, SSH key authentication, mail server with webmail, virtual hosts, VoIP service, and additional services including Apache2, Nginx, HTTPS, Samba, IPtables NAT gateway, FTP, DNS, and DHCP.",
+          "Simulated a network in Cisco Packet Tracer with configuration of routing between two routers, VLAN, server DHCP on router, server DNS, and server web.",
+        ],
+      },
+      certificates: {
+        title: "Certificates",
+        description: "Professional certifications and achievements I've earned throughout my career",
+        descriptions: [
+          "Certified in basic MikroTik network configuration, including routing, wireless, firewall, and network troubleshooting.",
+          "Certified in basic MikroTik network configuration, including static routing, wireless, firewall, VLAN, hotspot and network troubleshooting.",
+          "Knowledge of networking fundamentals, how devices communicate, cabling, network addressing and services, troubleshooting and support of endpoints.",
+          "Understanding of network monitoring and protection techniques, including the use of firewalls, cloud security, and cryptography, as well as familiarity with handling security alerts and implementing security governance.",
+          "Understanding Linux configurations, including use of DNS and DHCP server, MariaDB",
+          "Foundational understanding of Networking such as IPV4, TCP/IP, and OSI Model.",
+          "Certified in foundational networking concepts, including IP addressing, network protocols, and basic router/switch configuration.",
+          "Trained in network simulation using PNETLab, focusing on network design, configuration, and troubleshooting in a virtual environment",
+          "Studied ethical hacking, application and network exploitation, IoT security, penetration testing, and vulnerability assessment and scanning.",
+          "Learned about the opportunities and challenges of AI, quantum computing, and cryptography.",
+          "Gained knowledge of various types of viruses and malicious applications, including their forms and attack methods.",
+          "Participated in the MikroTik Network Olympiad, demonstrating skills in network configuration using MikroTik RouterOS.",
+          "Completed a basic Cisco course covering networking fundamentals, IP addressing, and introductory routing/switching.",
+          "Completed a basic Cisco course covering networking fundamentals, IP addressing, and introductory routing/switching.",
+        ],
+      },
+      contact: {
+        title: "Get In Touch",
+        description: "Have a project in mind or want to collaborate? Feel free to reach out!",
+        contactMe: "Contact Me",
+      },
+      footer: {
+        rights: "All rights reserved.",
+      },
+      comingSoon: {
+        title: "Coming Soon",
+        description: "New exciting features and content are on the way!",
+        heading: "We're working on something awesome!",
+        text: "This section is currently under development. Check back soon for updates.",
+        features: ["New Projects", "More Certificates", "Blog Posts"],
+      },
+    },
+    id: {
+      siteTitle: "Dzakwan - Portofolio",
+      nav: ["Profil", "Pengalaman", "Proyek", "Sertifikat", "Kontak"],
+      hero: {
+        downloadCV: "CV Saya",
+        contactMe: "Hubungi Saya",
+        cvPath: "/Documents/CV Muhamad Dzakwan Ar Efendi - Indonesia (Cyber).pdf",
+      },
+      profile: {
+        title: "Tentang Saya",
+        greeting: "Hai, Saya Muhamad Dzakwan Ar Efendi",
+        description:
+          "Saya adalah lulusan SMK Wikrama Bogor tahun 2025 berusia 18 tahun, jurusan Teknik Komputer Jaringan dan Telekomunikasi. Saya telah menyelesaikan magang selama enam bulan di PT Maxindo Mitra Solusi sebagai Technical Support, di mana saya bertanggung jawab untuk penilaian kebutuhan, instalasi, troubleshooting, dan pemeliharaan jaringan. Saya bersemangat untuk membangun karir di bidang cyber security dan administrasi sistem.",
+        location: "Lokasi",
+        email: "Email",
+        locationValue: "Bogor, Indonesia",
+      },
+      experience: {
+        title: "Pengalaman Kerja",
+        description: "Perjalanan profesional dan pencapaian karir saya",
+        present: "Sekarang",
+        locations: ["Jakarta Barat, Indonesia", "Indonesia", "Jakarta Barat, Indonesia"], // For each experience
+        achievements: [
+          // Technical Support Staff (Posisi Saat Ini)
+          [
+            "Melakukan survei lokasi untuk menilai kebutuhan jaringan klien dan kondisi infrastruktur.",
+            "Menginstal dan mengkonfigurasi perangkat jaringan seperti router, switch, dan access point.",
+            "Melakukan troubleshooting pada masalah jaringan, memastikan downtime dan gangguan layanan minimal.",
+            "Menyediakan pemeliharaan rutin dan pemantauan sistem jaringan untuk menjaga kinerja optimal.",
+            "Mendokumentasikan masalah teknis dan solusinya untuk mendukung berbagi pengetahuan dan pemecahan masalah di masa depan.",
+            "Membantu insinyur senior dalam merencanakan dan menerapkan infrastruktur jaringan berdasarkan spesifikasi klien.",
+            "Berkomunikasi dengan klien untuk menjelaskan masalah teknis dan memberikan solusi yang jelas.",
+          ],
+          // Bootcamp Student Cyber Security
+          [
+            "Mengikuti bootcamp Cyber Security IDN selama 10 minggu dengan pembelajaran intensif (teori & praktik) mengenai Linux, pentesting, keamanan web & mobile, SOC labs, dan cloud security. Mengerjakan proyek dan simulasi serangan nyata setiap minggunya.",
+          ],
+          // Technical Support Intern
+          [
+            "Melakukan survei lokasi untuk menilai kebutuhan jaringan klien dan kondisi infrastruktur.",
+            "Menginstal dan mengkonfigurasi perangkat jaringan seperti router, switch, dan access point.",
+            "Melakukan troubleshooting pada masalah jaringan, memastikan downtime dan gangguan layanan minimal.",
+            "Menyediakan pemeliharaan rutin dan pemantauan sistem jaringan untuk menjaga kinerja optimal.",
+            "Mendokumentasikan masalah teknis dan solusinya untuk mendukung berbagi pengetahuan dan pemecahan masalah di masa depan.",
+            "Membantu insinyur senior dalam merencanakan dan menerapkan infrastruktur jaringan berdasarkan spesifikasi klien.",
+            "Berkomunikasi dengan klien untuk menjelaskan masalah teknis dan memberikan solusi yang jelas.",
+          ],
+        ],
+      },
+      projects: {
+        title: "Proyek Saya",
+        description: "Tampilan karya terbaru, proyek pribadi, dan kontribusi saya",
+        project: "Proyek",
+        filterAll: "Semua Proyek",
+        filterMaxindo: "PT Maxindo Mitra Solusi",
+        filterWikrama: "SMK Wikrama Bogor",
+        categoryMaxindo: "Terkait dengan PT Maxindo Mitra Solusi",
+        categoryWikrama: "Terkait dengan SMK Wikrama Bogor",
+        descriptions: [
+          "Instalasi infrastruktur jaringan di RS PKU Muhammadiyah Yogyakarta, termasuk konfigurasi perangkat dan perancangan layout serta topologi jaringan untuk mendukung konektivitas rumah sakit yang andal dan efisien.",
+          "Melaksanakan peningkatan infrastruktur jaringan di Hotel Citadines Connect, mencakup peremajaan perangkat, penambahan access point dan switch, untuk meningkatkan cakupan, kapasitas, serta kinerja jaringan secara keseluruhan.",
+          "Melaksanakan peningkatan infrastruktur jaringan di Brits Hotel Puri Indah, mencakup peremajaan perangkat, penambahan access point dan switch, untuk meningkatkan cakupan, kapasitas, serta kinerja jaringan secara keseluruhan.",
+          "Merancang topologi jaringan dari awal, mengevaluasi perangkat yang ada, merekomendasikan perangkat baru, dan berkoordinasi langsung dengan klien untuk memastikan solusi sesuai kebutuhan.",
+          "Mengimplementasikan Snort IDS, ARP Poisoning (MITM), DMZ, pembatasan pemasangan USB, penguatan kata sandi, konfigurasi IPtables, dan pemindaian Nmap untuk pengujian pertahanan jaringan.",
+          "Mengkonfigurasi perangkat MikroTik dan Cisco di PNETLab, termasuk pengaturan dasar MikroTik dan implementasi DMZ ke router sekunder.",
+          "Mengkonfigurasi router MikroTik untuk terintegrasi dengan AWS dengan menetapkan DNS statis untuk IP server AWS, dan mengatur hotspot, DHCP, dan VLAN.",
+          "Menyiapkan jaringan kantor kecil menggunakan dua router MikroTik dengan static routing, load balancing, OSPF, manajemen antrian, firewall, dan hotspot.",
+          "Mengimplementasikan PPPoE dan hotspot pada router MikroTik, dan melakukan instalasi kabel FO dengan konfigurasi OLT dan ONT.",
+          "Membangun infrastruktur yang dapat diskalakan menggunakan ELB, Auto Scaling, RDS, Zabbix dan Nagios untuk pemantauan, dan mengkonfigurasi VPC dan instans EC2.",
+          "Menerapkan server Linux dengan LEMP stack, WordPress, autentikasi kunci SSH, mail server dengan webmail, virtual host, layanan VoIP, dan layanan tambahan termasuk Apache2, Nginx, HTTPS, Samba, gateway NAT IPtables, FTP, DNS, dan DHCP.",
+          "Mensimulasikan jaringan di Cisco Packet Tracer dengan konfigurasi routing antara dua router, VLAN, server DHCP pada router, server DNS, dan server web.",
+        ],
+      },
+      certificates: {
+        title: "Sertifikat",
+        description: "Sertifikasi profesional dan pencapaian yang telah saya peroleh sepanjang karir saya",
+        descriptions: [
+          "Tersertifikasi dalam konfigurasi jaringan MikroTik dasar, termasuk routing, wireless, firewall, dan troubleshooting jaringan.",
+          "Tersertifikasi dalam konfigurasi jaringan MikroTik dasar, termasuk static routing, wireless, firewall, VLAN, hotspot dan troubleshooting jaringan.",
+          "Pengetahuan tentang dasar-dasar jaringan, bagaimana perangkat berkomunikasi, pengkabelan, pengalamatan jaringan dan layanan, troubleshooting dan dukungan endpoint.",
+          "Pemahaman tentang teknik pemantauan dan perlindungan jaringan, termasuk penggunaan firewall, keamanan cloud, dan kriptografi, serta keakraban dengan penanganan peringatan keamanan dan implementasi tata kelola keamanan.",
+          "Pemahaman konfigurasi Linux, termasuk penggunaan server DNS dan DHCP, MariaDB",
+          "Pemahaman dasar tentang Jaringan seperti IPV4, TCP/IP, dan Model OSI.",
+          "Tersertifikasi dalam konsep jaringan dasar, termasuk pengalamatan IP, protokol jaringan, dan konfigurasi router/switch dasar.",
+          "Terlatih dalam simulasi jaringan menggunakan PNETLab, berfokus pada desain jaringan, konfigurasi, dan troubleshooting dalam lingkungan virtual",
+          "Mempelajari ethical hacking, eksploitasi aplikasi dan jaringan, keamanan IoT, penetration testing, dan penilaian kerentanan dan pemindaian.",
+          "Mempelajari peluang dan tantangan AI, komputasi kuantum, dan kriptografi.",
+          "Mengenal berbagai jenis virus dan aplikasi berbahaya, termasuk bentuk dan metode serangannya.",
+          "Berpartisipasi dalam Olimpiade Jaringan MikroTik, mendemonstrasikan keterampilan dalam konfigurasi jaringan menggunakan MikroTik RouterOS.",
+          "Menyelesaikan kursus dasar Cisco, mencakup dasar-dasar jaringan, pengalamatan IP, dan router/switch pengantar.",
+          "Menyelesaikan kursus dasar Cisco, mencakup dasar-dasar jaringan, pengalamatan IP, dan router/switch pengantar.",
+        ],
+      },
+      contact: {
+        title: "Hubungi Saya",
+        description: "Punya proyek dalam pikiran atau ingin berkolaborasi? Jangan ragu untuk menghubungi!",
+        contactMe: "Hubungi Saya",
+      },
+      footer: {
+        rights: "Hak Cipta Dilindungi.",
+      },
+      comingSoon: {
+        title: "Segera Hadir",
+        description: "Fitur dan konten menarik baru sedang dalam perjalanan!",
+        heading: "Kami sedang mengerjakan sesuatu yang keren!",
+        text: "Bagian ini sedang dalam pengembangan. Periksa kembali nanti untuk pembaruan.",
+        features: ["Proyek Baru", "Lebih Banyak Sertifikat", "Artikel Blog"],
+      },
+    },
+  }
 
-    // Get language toggle button and CV download button
-    const languageToggle = document.querySelector('.language-toggle');
-    const cvDownloadBtn = document.getElementById('cv-download-btn');
-    
-    // Check if there's a saved language preference
-    let currentLang = localStorage.getItem('language') || 'id'; // Default to Indonesian
-    
-    // Set initial language
-    setLanguage(currentLang);
-    
-    // Toggle language when button is clicked
-    languageToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        currentLang = currentLang === 'en' ? 'id' : 'en';
-        setLanguage(currentLang);
-        localStorage.setItem('language', currentLang);
-    });
-    
-    // Function to set language
-    function setLanguage(lang) {
-        // Update website title
-        document.getElementById('website-title').textContent = languages[lang].siteTitle;
+  // Get language toggle button and CV download button
+  const languageToggle = document.querySelector(".language-toggle")
+  const cvDownloadBtn = document.getElementById("cv-download-btn")
 
-        // Update language toggle icon/text
-        languageToggle.innerHTML = lang === 'en' ? '<i class="fas fa-language"></i> ID' : '<i class="fas fa-language"></i> EN';
-        
-        // Update HTML lang attribute
-        document.documentElement.lang = lang;
-        
-        // Update CV download link with download attribute
-        const cvFileName = lang === 'en' ? 
-            'CV Muhamad Dzakwan Ar Efendi - English (Cyber).pdf' : 
-            'CV Muhamad Dzakwan Ar Efendi - Indonesia (Cyber).pdf';
-        
-        cvDownloadBtn.setAttribute('href', languages[lang].hero.cvPath);
-        cvDownloadBtn.setAttribute('download', cvFileName);
-        
-        // Update navigation
-        const navLinks = document.querySelectorAll('.nav-menu .nav-link:not(.theme-toggle):not(.language-toggle)');
-        navLinks.forEach((link, index) => {
-            if (index < languages[lang].nav.length) {
-                link.textContent = languages[lang].nav[index];
-            }
-        });
-        
-        // Update hero section
-        document.querySelector('.hero-buttons .btn-primary').textContent = languages[lang].hero.downloadCV;
-        document.querySelector('.hero-buttons .btn-outline').textContent = languages[lang].hero.contactMe;
-        
-        // Update profile section
-        document.querySelector('#profile .section-header h2').textContent = languages[lang].profile.title;
-        document.querySelector('.profile-text h3').textContent = languages[lang].profile.greeting;
-        document.querySelector('.profile-text > p').textContent = languages[lang].profile.description;
-        document.querySelectorAll('.info-item h4')[0].textContent = languages[lang].profile.location;
-        document.querySelectorAll('.info-item h4')[1].textContent = languages[lang].profile.email;
-        
-        // Update profile location value
-        document.querySelectorAll('.info-item p')[0].textContent = languages[lang].profile.locationValue;
-        
-        // Update experience section
-        document.querySelector('#experience .section-header h2').textContent = languages[lang].experience.title;
-        document.querySelector('#experience .section-description').textContent = languages[lang].experience.description;
-        
-        // Update experience locations
-        const experienceLocations = document.querySelectorAll('.experience-location');
-        experienceLocations.forEach((location, index) => {
-            if (index < languages[lang].experience.locations.length) {
-                location.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${languages[lang].experience.locations[index]}`;
-            }
-        });
-        
-        // Update "Present" text in timeline
-        const timelineDates = document.querySelectorAll('.timeline-date span');
-        timelineDates.forEach(date => {
-            if (date.textContent.includes('Present') || date.textContent.includes('Sekarang')) {
-                date.textContent = date.textContent.replace(
-                    lang === 'en' ? 'Sekarang' : 'Present', 
-                    lang === 'en' ? 'Present' : 'Sekarang'
-                );
-            }
-        });
-        
-        // Update experience achievements - Fixed to handle missing achievements
-        const experienceCards = document.querySelectorAll('.experience-card');
-        experienceCards.forEach((card, cardIndex) => {
-            // Check if achievements exist for this card index
-            if (cardIndex < languages[lang].experience.achievements.length && 
-                languages[lang].experience.achievements[cardIndex].length > 0) {
-                
-                const achievements = card.querySelectorAll('.experience-achievements li');
-                achievements.forEach((achievement, achievementIndex) => {
-                    if (achievementIndex < languages[lang].experience.achievements[cardIndex].length) {
-                        achievement.textContent = languages[lang].experience.achievements[cardIndex][achievementIndex];
-                    }
-                });
-            }
-        });
-        
-        // Update projects section
-        document.querySelector('#projects .section-header h2').textContent = languages[lang].projects.title;
-        document.querySelector('#projects .section-description').textContent = languages[lang].projects.description;
-        
-        // Update project descriptions and buttons
-        const projectCards = document.querySelectorAll('.project-card');
-        projectCards.forEach((card, index) => {
-            if (index < languages[lang].projects.descriptions.length) {
-                card.querySelector('.project-info > p').textContent = languages[lang].projects.descriptions[index];
-                // Update project button text
-                const projectBtn = card.querySelector('.project-links .btn-sm');
-                if (projectBtn) {
-                    projectBtn.innerHTML = `<i class="fas fa-external-link-alt"></i> ${languages[lang].projects.project}`;
-                }
-            }
-        });
-        
-        // Update certificates section
-        document.querySelector('#certificates .section-header h2').textContent = languages[lang].certificates.title;
-        document.querySelector('#certificates .section-description').textContent = languages[lang].certificates.description;
-        
-        // Update certificate descriptions
-        const certificateCards = document.querySelectorAll('.certificate-card');
-        certificateCards.forEach((card, index) => {
-            if (index < languages[lang].certificates.descriptions.length) {
-                const description = card.querySelector('.certificate-description p');
-                if (description) {
-                    description.textContent = languages[lang].certificates.descriptions[index];
-                }
-            }
-        });
-        
-        // Update contact section
-        document.querySelector('#contact .section-header h2').textContent = languages[lang].contact.title;
-        document.querySelector('.contact-content > p').textContent = languages[lang].contact.description;
-        document.querySelector('.contact-content .btn-primary').textContent = languages[lang].contact.contactMe;
-        
-        // Update footer
-        const footerText = document.querySelector('.footer p');
-        footerText.innerHTML = `&copy; <span id="current-year"></span> Dzakwan Efendi. ${languages[lang].footer.rights}`;
-        
-        // Make sure the current year is still set
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+  // Check if there's a saved language preference
+  let currentLang = localStorage.getItem("language") || "id" // Default to Indonesian
+
+  // Set initial language
+  setLanguage(currentLang)
+
+  // Toggle language when button is clicked
+  languageToggle.addEventListener("click", (e) => {
+    e.preventDefault()
+    currentLang = currentLang === "en" ? "id" : "en"
+    setLanguage(currentLang)
+    localStorage.setItem("language", currentLang)
+  })
+
+  // Function to set language
+  function setLanguage(lang) {
+    // Update website title
+    document.getElementById("website-title").textContent = languages[lang].siteTitle
+
+    // Update language toggle icon/text
+    languageToggle.innerHTML =
+      lang === "en" ? '<i class="fas fa-language"></i> ID' : '<i class="fas fa-language"></i> EN'
+
+    // Update HTML lang attribute
+    document.documentElement.lang = lang
+
+    // Update CV download link with download attribute
+    const cvFileName =
+      lang === "en"
+        ? "CV Muhamad Dzakwan Ar Efendi - English (Cyber).pdf"
+        : "CV Muhamad Dzakwan Ar Efendi - Indonesia (Cyber).pdf"
+
+    cvDownloadBtn.setAttribute("href", languages[lang].hero.cvPath)
+    cvDownloadBtn.setAttribute("download", cvFileName)
+
+    // Update navigation
+    const navLinks = document.querySelectorAll(".nav-menu .nav-link:not(.theme-toggle):not(.language-toggle)")
+    navLinks.forEach((link, index) => {
+      if (index < languages[lang].nav.length) {
+        link.textContent = languages[lang].nav[index]
+      }
+    })
+
+    // Update hero section
+    document.querySelector(".hero-buttons .btn-primary").textContent = languages[lang].hero.downloadCV
+    document.querySelector(".hero-buttons .btn-outline").textContent = languages[lang].hero.contactMe
+
+    // Update profile section
+    document.querySelector("#profile .section-header h2").textContent = languages[lang].profile.title
+    document.querySelector(".profile-text h3").textContent = languages[lang].profile.greeting
+    document.querySelector(".profile-text > p").textContent = languages[lang].profile.description
+    document.querySelectorAll(".info-item h4")[0].textContent = languages[lang].profile.location
+    document.querySelectorAll(".info-item h4")[1].textContent = languages[lang].profile.email
+
+    // Update profile location value
+    document.querySelectorAll(".info-item p")[0].textContent = languages[lang].profile.locationValue
+
+    // Update experience section
+    document.querySelector("#experience .section-header h2").textContent = languages[lang].experience.title
+    document.querySelector("#experience .section-description").textContent = languages[lang].experience.description
+
+    // Update experience locations
+    const experienceLocations = document.querySelectorAll(".experience-location")
+    experienceLocations.forEach((location, index) => {
+      if (index < languages[lang].experience.locations.length) {
+        location.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${languages[lang].experience.locations[index]}`
+      }
+    })
+
+    // Update "Present" text in timeline
+    const timelineDates = document.querySelectorAll(".timeline-date span")
+    timelineDates.forEach((date) => {
+      if (date.textContent.includes("Present") || date.textContent.includes("Sekarang")) {
+        date.textContent = date.textContent.replace(
+          lang === "en" ? "Sekarang" : "Present",
+          lang === "en" ? "Present" : "Sekarang",
+        )
+      }
+    })
+
+    // Update experience achievements - Fixed to handle missing achievements
+    const experienceCards = document.querySelectorAll(".experience-card")
+    experienceCards.forEach((card, cardIndex) => {
+      // Check if achievements exist for this card index
+      if (
+        cardIndex < languages[lang].experience.achievements.length &&
+        languages[lang].experience.achievements[cardIndex].length > 0
+      ) {
+        const achievements = card.querySelectorAll(".experience-achievements li")
+        achievements.forEach((achievement, achievementIndex) => {
+          if (achievementIndex < languages[lang].experience.achievements[cardIndex].length) {
+            achievement.textContent = languages[lang].experience.achievements[cardIndex][achievementIndex]
+          }
+        })
+      }
+    })
+
+    // Update projects section
+    document.querySelector("#projects .section-header h2").textContent = languages[lang].projects.title
+    document.querySelector("#projects .section-description").textContent = languages[lang].projects.description
+
+    // Update project filter buttons
+    const filterBtns = document.querySelectorAll(".filter-btn")
+    const dropdownItems = document.querySelectorAll(".dropdown-item")
+    const selectedFilter = document.getElementById("selectedFilter")
+
+    // Update desktop buttons
+    filterBtns[0].textContent = languages[lang].projects.filterAll
+    filterBtns[1].textContent = languages[lang].projects.filterMaxindo
+    filterBtns[2].textContent = languages[lang].projects.filterWikrama
+
+    // Update mobile dropdown items
+    dropdownItems[0].textContent = languages[lang].projects.filterAll
+    dropdownItems[1].textContent = languages[lang].projects.filterMaxindo
+    dropdownItems[2].textContent = languages[lang].projects.filterWikrama
+    
+    // Update selected filter text if it's currently showing "All Projects"
+    if (
+      selectedFilter &&
+      (selectedFilter.textContent === "Semua Proyek" || selectedFilter.textContent === "All Projects")
+    ) {
+      selectedFilter.textContent = languages[lang].projects.filterAll
     }
-});
+
+    // Update category headers
+    const categoryHeaders = document.querySelectorAll(".category-header h3")
+    categoryHeaders[0].innerHTML = `<i class="fas fa-building"></i> ${languages[lang].projects.categoryMaxindo}`
+    if (categoryHeaders[1]) {
+      categoryHeaders[1].innerHTML = `<i class="fas fa-graduation-cap"></i> ${languages[lang].projects.categoryWikrama}`
+    }
+
+    // Update project descriptions and buttons
+    const projectCards = document.querySelectorAll(".project-card:not(.coming-soon)")
+    projectCards.forEach((card, index) => {
+      if (index < languages[lang].projects.descriptions.length) {
+        card.querySelector(".project-info > p").textContent = languages[lang].projects.descriptions[index]
+        // Update project button text
+        const projectBtn = card.querySelector(".project-links .btn-sm")
+        if (projectBtn) {
+          projectBtn.innerHTML = `<i class="fas fa-external-link-alt"></i> ${languages[lang].projects.project}`
+        }
+      }
+    })
+
+    // Update certificates section
+    document.querySelector("#certificates .section-header h2").textContent = languages[lang].certificates.title
+    document.querySelector("#certificates .section-description").textContent = languages[lang].certificates.description
+
+    // Update certificate descriptions
+    const certificateCards = document.querySelectorAll(".certificate-card")
+    certificateCards.forEach((card, index) => {
+      if (index < languages[lang].certificates.descriptions.length) {
+        const description = card.querySelector(".certificate-description p")
+        if (description) {
+          description.textContent = languages[lang].certificates.descriptions[index]
+        }
+      }
+    })
+
+    // Update contact section
+    document.querySelector("#contact .section-header h2").textContent = languages[lang].contact.title
+    document.querySelector(".contact-content > p").textContent = languages[lang].contact.description
+    document.querySelector(".contact-content .btn-primary").textContent = languages[lang].contact.contactMe
+
+    // Update footer
+    const footerText = document.querySelector(".footer p")
+    footerText.innerHTML = `&copy; <span id="current-year"></span> Dzakwan Efendi. ${languages[lang].footer.rights}`
+
+    // Make sure the current year is still set
+    document.getElementById("current-year").textContent = new Date().getFullYear()
+  }
+})

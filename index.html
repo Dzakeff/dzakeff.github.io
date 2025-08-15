@@ -232,258 +232,370 @@
                 <p class="section-description" style="margin-top: 20px;">Tampilan karya terbaru, proyek pribadi, dan kontribusi saya</p>
             </div>
             
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/Project/Yiolas Grill Perangkat existing.jpg" alt="Network Design and Client Consultation Project">
-                        <div class="overlay">
+            <!-- Project Filter Buttons -->
+            <div class="project-filters">
+                <button class="filter-btn" data-filter="all">Semua Proyek</button>
+                <button class="filter-btn" data-filter="maxindo">PT Maxindo Mitra Solusi</button>
+                <button class="filter-btn" data-filter="wikrama">SMK Wikrama Bogor</button>
+            </div>
+
+            <!-- Project Filter Dropdown (Mobile) -->
+            <div class="project-filters-mobile">
+                <div class="dropdown-toggle" id="projectDropdown">
+                    <span id="selectedFilter">Semua Proyek</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <div class="dropdown-item" data-filter="all">Semua Proyek</div>
+                    <div class="dropdown-item" data-filter="maxindo">PT Maxindo Mitra Solusi</div>
+                    <div class="dropdown-item" data-filter="wikrama">SMK Wikrama Bogor</div>
+                </div>
+            </div>
+
+            <!-- PT Maxindo Mitra Solusi Projects -->
+            <div class="project-category" data-category="maxindo">
+                <div class="category-header">
+                    <h3><i class="fas fa-building"></i> Associated with PT Maxindo Mitra Solusi</h3>
+                </div>
+                <div class="projects-grid">
+                    <!-- Placeholder for future Maxindo projects -->
+                    <div class="project-card" data-category="maxindo">
+                        <div class="project-image">
+                            <img src="img/Project/Topologi RS PKU Muhammadiyah Yogyakarta.png" alt="Topology of PKU Muhammadiyah Hospital Yogyakarta">
+                            <div class="overlay">
+                                <h3>Network Installation at PKU Muhammadiyah Hospital Yogyakarta</h3>
+                                <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/1NX151idKABBMSX8vxMgvsX5mDAe7uMVU?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Network Installation at PKU Muhammadiyah Hospital Yogyakarta</h3>
+                            <p>Instalasi infrastruktur jaringan di RS PKU Muhammadiyah Yogyakarta, termasuk konfigurasi perangkat dan perancangan layout serta topologi jaringan untuk mendukung konektivitas rumah sakit yang andal dan efisien.</p>
+                            <div class="project-details">
+                                <div class="project-date"><i class="fas fa-calendar"></i> 2025 - Maxindo</div>
+                            </div>
+                            <div class="project-tags">
+                                <span>Network Infra</span>
+                                <span>MikroTik Hotspot</span>
+                                <span>VLAN</span>
+                                <span>Ruijie Switch and Access Point Configuration</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="maxindo">
+                        <div class="project-image">
+                            <img src="img/Project/Topologi Citadines Connect Airport - FINAL.png" alt="Topology of Citadines Connect Airport Jakarta Hotel">
+                            <div class="overlay">
+                                <h3>Network Installation at Citadines Connect Airport Jakarta Hotel</h3>
+                                <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/1mRI6h6dbK5rSd2UOgc3t3LAZfK-J99XC?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Network Installation at Citadines Connect Airport Jakarta Hotel</h3>
+                            <p>Melaksanakan peningkatan infrastruktur jaringan di Hotel Citadines Connect, mencakup peremajaan perangkat, penambahan access point dan switch, untuk meningkatkan cakupan, kapasitas, serta kinerja jaringan secara keseluruhan.</p>
+                            <div class="project-details">
+                                <div class="project-date"><i class="fas fa-calendar"></i> 2025 - Maxindo</div>
+                            </div>
+                            <div class="project-tags">
+                                <span>Network Infra</span>
+                                <span>MikroTik Hotspot</span>
+                                <span>VLAN</span>
+                                <span>Ruijie Switch Configuration</span>
+                                <span>HUAWEI Access Point Configuration</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card" data-category="maxindo">
+                        <div class="project-image">
+                            <img src="img/Project/Topologi Brits Hotel Puri Indah.png" alt="Topology of Brits Hotel Puri Indah">
+                            <div class="overlay">
+                                <h3>Network Installation at Brits Hotel Puri Indah</h3>
+                                <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/1mRI6h6dbK5rSd2UOgc3t3LAZfK-J99XC?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3>Network Installation at Brits Hotel Puri Indah</h3>
+                            <p>Melaksanakan peningkatan infrastruktur jaringan di Brits Hotel Puri Indah, mencakup peremajaan perangkat, penambahan access point dan switch, untuk meningkatkan cakupan, kapasitas, serta kinerja jaringan secara keseluruhan.</p>
+                            <div class="project-details">
+                                <div class="project-date"><i class="fas fa-calendar"></i> 2024 - Maxindo</div>
+                            </div>
+                            <div class="project-tags">
+                                <span>Network Infra</span>
+                                <span>MikroTik Hotspot</span>
+                                <span>VLAN</span>
+                                <span>Ruijie Switch Configuration</span>
+                                <span>GrandStream Access Point Configuration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SMK Wikrama Bogor Projects -->
+            <div class="project-category" data-category="wikrama">
+                <div class="category-header">
+                    <h3><i class="fas fa-graduation-cap"></i> Associated with SMK Wikrama Bogor</h3>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card" data-category="wikrama">
+                        <div class="project-image">
+                            <img src="img/Project/Yiolas Grill Perangkat existing.jpg" alt="Network Design and Client Consultation Project">
+                            <div class="overlay">
+                                <h3>Network Design and Client Consultation Project</h3>
+                                <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/1-9qif-k4yFm9tXgBmdb1rYGSXk6qAjqL" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
+                            </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
                             <h3>Network Design and Client Consultation Project</h3>
-                            <div class="project-links">
-                            <a href="https://drive.google.com/drive/folders/1-9qif-k4yFm9tXgBmdb1rYGSXk6qAjqL" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
-                        </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Network Design and Client Consultation Project</h3>
-                        <p>Merancang topologi jaringan dari awal, mengevaluasi perangkat yang ada, merekomendasikan perangkat baru, dan berkoordinasi langsung dengan klien untuk memastikan solusi sesuai kebutuhan.</p>
-                        <div class="project-details">
-                            <div class="project-date"><i class="fas fa-calendar"></i> 2025 - Wikrama</div>
-                        </div>
-                        <div class="project-tags">
-                            <span>Network Design</span>
-                            <span>Device Analysis</span>
-                            <span>Ruijie</span>
-                            <span>MikroTik</span>
-                            <span>Failover</span>
-                            <span>Load Balance</span>
-                            <span>QoS</span>                            
+                            <p>Merancang topologi jaringan dari awal, mengevaluasi perangkat yang ada, merekomendasikan perangkat baru, dan berkoordinasi langsung dengan klien untuk memastikan solusi sesuai kebutuhan.</p>
+                            <div class="project-details">
+                                <div class="project-date"><i class="fas fa-calendar"></i> 2025 - Wikrama</div>
+                            </div>
+                            <div class="project-tags">
+                                <span>Network Design</span>
+                                <span>Device Analysis</span>
+                                <span>Ruijie</span>
+                                <span>MikroTik</span>
+                                <span>Failover</span>
+                                <span>Load Balance</span>
+                                <span>QoS</span>                            
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/Project/Kali-Linux-Linux-Backtrack-Linux-glitch-art.jpg" alt="Network Security Project">
-                        <div class="overlay">
+                    <div class="project-card" data-category="wikrama">
+                        <div class="project-image">
+                            <img src="img/Project/Kali-Linux-Linux-Backtrack-Linux-glitch-art.jpg" alt="Network Security Project">
+                            <div class="overlay">
+                                <h3>Network Security Project</h3>
+                                <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/1ZGVOEE-dp3w5iwYKV4ELxDPHChgDw_DS?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
+                            </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
                             <h3>Network Security Project</h3>
-                            <div class="project-links">
-                            <a href="https://drive.google.com/drive/folders/1ZGVOEE-dp3w5iwYKV4ELxDPHChgDw_DS?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
-                        </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Network Security Project</h3>
-                        <p>Mengimplementasikan Snort IDS, ARP Poisoning (MITM), DMZ, pembatasan pemasangan USB, penguatan kata sandi, konfigurasi IPtables, dan pemindaian Nmap untuk pengujian pertahanan jaringan.</p>
-                        <div class="project-details">
-                            <div class="project-date"><i class="fas fa-calendar"></i> 2025 - Wikrama</div>
-                        </div>
-                        <div class="project-tags">
-                            <span>Snort</span>
-                            <span>ARP Poisoning</span>
-                            <span>DMZ</span>
-                            <span>USB Security</span>
-                            <span>Password Hardening</span>
-                            <span>IPtables</span>
-                            <span>Nmap</span>                            
+                            <p>Mengimplementasikan Snort IDS, ARP Poisoning (MITM), DMZ, pembatasan pemasangan USB, penguatan kata sandi, konfigurasi IPtables, dan pemindaian Nmap untuk pengujian pertahanan jaringan.</p>
+                            <div class="project-details">
+                                <div class="project-date"><i class="fas fa-calendar"></i> 2025 - Wikrama</div>
+                            </div>
+                            <div class="project-tags">
+                                <span>Snort</span>
+                                <span>ARP Poisoning</span>
+                                <span>DMZ</span>
+                                <span>USB Security</span>
+                                <span>Password Hardening</span>
+                                <span>IPtables</span>
+                                <span>Nmap</span>                            
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/Project/PNETLab.jpg" alt="PNETLab Network Simulation">
-                        <div class="overlay">
+                    
+                    <div class="project-card" data-category="wikrama">
+                        <div class="project-image">
+                            <img src="img/Project/PNETLab.jpg" alt="PNETLab Network Simulation">
+                            <div class="overlay">
+                                <h3>PNETLab Network Simulation</h3>
+                                <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/1lDGNba1q4sapSGKMcO0kvHdCVTOwNzV3?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
+                            </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
                             <h3>PNETLab Network Simulation</h3>
-                            <div class="project-links">
-                            <a href="https://drive.google.com/drive/folders/1lDGNba1q4sapSGKMcO0kvHdCVTOwNzV3?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
-                        </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>PNETLab Network Simulation</h3>
-                        <p>Mengkonfigurasi perangkat MikroTik dan Cisco di PNETLab, termasuk pengaturan dasar MikroTik dan implementasi DMZ ke router sekunder.</p>
-                        <div class="project-details">
-                            <div class="project-date"><i class="fas fa-calendar"></i> 2024 - Wikrama</div>
-                        </div>
-                        <div class="project-tags">
-                            <span>PNETLab</span>
-                            <span>MikroTik RouterOS</span>
-                            <span>Cisco Switch</span>
-                            <span>DMZ</span>                            
+                            <p>Mengkonfigurasi perangkat MikroTik dan Cisco di PNETLab, termasuk pengaturan dasar MikroTik dan implementasi DMZ ke router sekunder.</p>
+                            <div class="project-details">
+                                <div class="project-date"><i class="fas fa-calendar"></i> 2024 - Wikrama</div>
+                            </div>
+                            <div class="project-tags">
+                                <span>PNETLab</span>
+                                <span>MikroTik RouterOS</span>
+                                <span>Cisco Switch</span>
+                                <span>DMZ</span>                            
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/Project/MikroTik x AWS.jpg" alt="MikroTik Network Integration with AWS">
-                        <div class="overlay">
+                    <div class="project-card" data-category="wikrama">
+                        <div class="project-image">
+                            <img src="img/Project/MikroTik x AWS.jpg" alt="MikroTik Network Integration with AWS">
+                            <div class="overlay">
+                                <h3>MikroTik Network Integration with AWS</h3>
+                                <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/1gxcRza9nYOZacHpQH1SydgzxOI1mjrCa?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
                             <h3>MikroTik Network Integration with AWS</h3>
-                            <div class="project-links">
-                            <a href="https://drive.google.com/drive/folders/1gxcRza9nYOZacHpQH1SydgzxOI1mjrCa?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>MikroTik Network Integration with AWS</h3>
-                        <p>Mengkonfigurasi router MikroTik untuk terintegrasi dengan AWS dengan menetapkan DNS statis untuk IP server AWS, dan mengatur hotspot, DHCP, dan VLAN.</p>
-                        <div class="project-details">
-                            <div class="project-date"><i class="fas fa-calendar"></i> 2024 - Wikrama</div>
-                        </div>
-                        <div class="project-tags">
-                            <span>MikroTik RouterOS</span>
-                            <span>DNS Static</span>
-                            <span>Hotspot</span>
-                            <span>DHCP Server</span>
-                            <span>VLAN</span>
-                            <span>AWS EC2</span>
-                            <span>AWS RDS</span>
-                            <span>GitHub</span>
+                            <p>Mengkonfigurasi router MikroTik untuk terintegrasi dengan AWS dengan menetapkan DNS statis untuk IP server AWS, dan mengatur hotspot, DHCP, dan VLAN.</p>
+                            <div class="project-details">
+                                <div class="project-date"><i class="fas fa-calendar"></i> 2024 - Wikrama</div>
+                            </div>
+                            <div class="project-tags">
+                                <span>MikroTik RouterOS</span>
+                                <span>DNS Static</span>
+                                <span>Hotspot</span>
+                                <span>DHCP Server</span>
+                                <span>VLAN</span>
+                                <span>AWS EC2</span>
+                                <span>AWS RDS</span>
+                                <span>GitHub</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/Project/MikroTik.jpg" alt="Office Network Setup with MikroTik">
-                        <div class="overlay">
+                    
+                    <div class="project-card" data-category="wikrama">
+                        <div class="project-image">
+                            <img src="img/Project/MikroTik.jpg" alt="Office Network Setup with MikroTik">
+                            <div class="overlay">
+                                <h3>Office Network Setup with MikroTik</h3>
+                                <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/1OML7ZL4JN6Q-b7EU7VwQPfsddECIC6j6?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
+                            </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
                             <h3>Office Network Setup with MikroTik</h3>
-                            <div class="project-links">
-                            <a href="https://drive.google.com/drive/folders/1OML7ZL4JN6Q-b7EU7VwQPfsddECIC6j6?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
-                        </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Office Network Setup with MikroTik</h3>
-                        <p>Menyiapkan jaringan kantor kecil menggunakan dua router MikroTik dengan static routing, load balancing, OSPF, manajemen antrian, firewall, dan hotspot.</p>
-                        <div class="project-details">
-                            <div class="project-date"><i class="fas fa-calendar"></i> 2024 - Wikrama</div>
-                        </div>
-                        <div class="project-tags">
-                            <span>MikroTik RouterOS</span>
-                            <span>Static Routing</span>
-                            <span>Load Balancing</span>
-                            <span>OSPF</span>
-                            <span>Simple Queue</span>
-                            <span>Firewall Filter</span>
-                            <span>Hotspot</span>
+                            <p>Menyiapkan jaringan kantor kecil menggunakan dua router MikroTik dengan static routing, load balancing, OSPF, manajemen antrian, firewall, dan hotspot.</p>
+                            <div class="project-details">
+                                <div class="project-date"><i class="fas fa-calendar"></i> 2024 - Wikrama</div>
+                            </div>
+                            <div class="project-tags">
+                                <span>MikroTik RouterOS</span>
+                                <span>Static Routing</span>
+                                <span>Load Balancing</span>
+                                <span>OSPF</span>
+                                <span>Simple Queue</span>
+                                <span>Firewall Filter</span>
+                                <span>Hotspot</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/Project/FTTh.jpg" alt="FTTH Project with MikroTik">
-                        <div class="overlay">
+                    <div class="project-card" data-category="wikrama">
+                        <div class="project-image">
+                            <img src="img/Project/FTTh.jpg" alt="FTTH Project with MikroTik">
+                            <div class="overlay">
+                                <h3>FTTH Project with MikroTik</h3>
+                                <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/1QLRj68JzA0Pj-EMAeEEAUiiX1Pw--TX3?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
+                            </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
                             <h3>FTTH Project with MikroTik</h3>
-                            <div class="project-links">
-                            <a href="https://drive.google.com/drive/folders/1QLRj68JzA0Pj-EMAeEEAUiiX1Pw--TX3?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
-                        </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>FTTH Project with MikroTik</h3>
-                        <p>Mengimplementasikan PPPoE dan hotspot pada router MikroTik, dan melakukan instalasi kabel FO dengan konfigurasi OLT dan ONT.</p>
-                        <div class="project-details">
-                            <div class="project-date"><i class="fas fa-calendar"></i> 2024 - Wikrama</div>
-                        </div>
-                        <div class="project-tags">
-                            <span>Fiber Optic</span>
-                            <span>PPPoE</span>
-                            <span>Hotspot</span>
-                            <span>MikroTik RouterOS</span>
-                            <span>OLT</span>
-                            <span>ONT</span>                            
+                            <p>Mengimplementasikan PPPoE dan hotspot pada router MikroTik, dan melakukan instalasi kabel FO dengan konfigurasi OLT dan ONT.</p>
+                            <div class="project-details">
+                                <div class="project-date"><i class="fas fa-calendar"></i> 2024 - Wikrama</div>
+                            </div>
+                            <div class="project-tags">
+                                <span>Fiber Optic</span>
+                                <span>PPPoE</span>
+                                <span>Hotspot</span>
+                                <span>MikroTik RouterOS</span>
+                                <span>OLT</span>
+                                <span>ONT</span>                            
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/Project/AWS.png" alt="AWS Infrastructure Project">
-                        <div class="overlay">
+                    <div class="project-card" data-category="wikrama">
+                        <div class="project-image">
+                            <img src="img/Project/AWS.png" alt="AWS Infrastructure Project">
+                            <div class="overlay">
+                                <h3>AWS Infrastructure Project</h3>
+                                <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/17lm7IZd5Srf-PffD_JDmxCKAoTSqWrYv?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
+                            </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
                             <h3>AWS Infrastructure Project</h3>
-                            <div class="project-links">
-                            <a href="https://drive.google.com/drive/folders/17lm7IZd5Srf-PffD_JDmxCKAoTSqWrYv?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
-                        </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>AWS Infrastructure Project</h3>
-                        <p>Membangun infrastruktur yang dapat diskalakan menggunakan ELB, Auto Scaling, RDS, Zabbix dan Nagios untuk pemantauan, dan mengkonfigurasi VPC dan instans EC2.</p>
-                        <div class="project-details">
-                            <div class="project-date"><i class="fas fa-calendar"></i> 2024 - Wikrama</div>
-                        </div>
-                        <div class="project-tags">
-                            <span>AWS EC2</span>
-                            <span>ELB</span>
-                            <span>Auto Scaling</span>
-                            <span>AWS RDS</span>
-                            <span>Zabbix</span>
-                            <span>Nagios</span>
-                            <span>VPC</span>                            
+                            <p>Membangun infrastruktur yang dapat diskalakan menggunakan ELB, Auto Scaling, RDS, Zabbix dan Nagios untuk pemantauan, dan mengkonfigurasi VPC dan instans EC2.</p>
+                            <div class="project-details">
+                                <div class="project-date"><i class="fas fa-calendar"></i> 2024 - Wikrama</div>
+                            </div>
+                            <div class="project-tags">
+                                <span>AWS EC2</span>
+                                <span>ELB</span>
+                                <span>Auto Scaling</span>
+                                <span>AWS RDS</span>
+                                <span>Zabbix</span>
+                                <span>Nagios</span>
+                                <span>VPC</span>                            
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/Project/debian-seeklogo.png" alt="Linux Server Project">
-                        <div class="overlay">
+                    <div class="project-card" data-category="wikrama">
+                        <div class="project-image">
+                            <img src="img/Project/debian-seeklogo.png" alt="Linux Server Project">
+                            <div class="overlay">
+                                <h3>Linux Server Project</h3>
+                                <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/1trB_7el_pHqwRxQxMZB-Gc1dmx6HhHwz?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
+                            </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
                             <h3>Linux Server Project</h3>
-                            <div class="project-links">
-                            <a href="https://drive.google.com/drive/folders/1trB_7el_pHqwRxQxMZB-Gc1dmx6HhHwz?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
-                        </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Linux Server Project</h3>
-                        <p>Menerapkan server Linux dengan LEMP stack, WordPress, autentikasi kunci SSH, mail server dengan webmail, virtual host, layanan VoIP, dan layanan tambahan termasuk Apache2, Nginx, HTTPS, Samba, gateway NAT IPtables, FTP, DNS, dan DHCP.</p>
-                        <div class="project-details">
-                            <div class="project-date"><i class="fas fa-calendar"></i> 2023 - Wikrama</div>
-                        </div>
-                        <div class="project-tags">
-                            <span>LEMP</span>
-                            <span>WordPress</span>
-                            <span>SSH Key</span>
-                            <span>Mail Server</span>
-                            <span>Virtual Host</span>
-                            <span>Asterisk</span>
-                            <span>Apache2</span>
-                            <span>Nginx</span>
-                            <span>SSL/TLS</span>
-                            <span>Samba</span>
-                            <span>IPtables NAT</span>
-                            <span>FTP</span>
-                            <span>DNS</span>
-                            <span>DHCP</span>                                
+                            <p>Menerapkan server Linux dengan LEMP stack, WordPress, autentikasi kunci SSH, mail server dengan webmail, virtual host, layanan VoIP, dan layanan tambahan termasuk Apache2, Nginx, HTTPS, Samba, gateway NAT IPtables, FTP, DNS, dan DHCP.</p>
+                            <div class="project-details">
+                                <div class="project-date"><i class="fas fa-calendar"></i> 2023 - Wikrama</div>
+                            </div>
+                            <div class="project-tags">
+                                <span>LEMP</span>
+                                <span>WordPress</span>
+                                <span>SSH Key</span>
+                                <span>Mail Server</span>
+                                <span>Virtual Host</span>
+                                <span>Asterisk</span>
+                                <span>Apache2</span>
+                                <span>Nginx</span>
+                                <span>SSL/TLS</span>
+                                <span>Samba</span>
+                                <span>IPtables NAT</span>
+                                <span>FTP</span>
+                                <span>DNS</span>
+                                <span>DHCP</span>                                
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/Project/Cisco Packet Tracer.jpg" alt="Cisco Packet Tracer Lab">
-                        <div class="overlay">
+                    <div class="project-card" data-category="wikrama">
+                        <div class="project-image">
+                            <img src="img/Project/Cisco Packet Tracer.jpg" alt="Cisco Packet Tracer Lab">
+                            <div class="overlay">
+                                <h3>Cisco Packet Tracer Lab</h3>
+                                <div class="project-links">
+                                <a href="https://drive.google.com/drive/folders/1A14HJuuDmrNoT27tAPSbN8Yz39Ga8AKd?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-info">
                             <h3>Cisco Packet Tracer Lab</h3>
-                            <div class="project-links">
-                            <a href="https://drive.google.com/drive/folders/1A14HJuuDmrNoT27tAPSbN8Yz39Ga8AKd?usp=drive_link" target="_blank" class="btn btn-sm"><i class="fas fa-external-link-alt"></i> Proyek</a>                                 
-                        </div>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Cisco Packet Tracer Lab</h3>
-                        <p>Mensimulasikan jaringan di Cisco Packet Tracer dengan konfigurasi routing antara dua router, VLAN, server DHCP pada router, server DNS, dan server web.</p>
-                        <div class="project-details">
-                            <div class="project-date"><i class="fas fa-calendar"></i> 2022 - Wikrama</div>
-                        </div>
-                        <div class="project-tags">
-                            <span>Cisco Packet Tracer</span>
-                            <span>Routing</span>
-                            <span>VLAN</span>
-                            <span>DHCP Server</span>
-                            <span>DNS Server</span>
-                            <span>Web Server</span>
+                            <p>Mensimulasikan jaringan di Cisco Packet Tracer dengan konfigurasi routing antara dua router, VLAN, server DHCP pada router, server DNS, dan server web.</p>
+                            <div class="project-details">
+                                <div class="project-date"><i class="fas fa-calendar"></i> 2022 - Wikrama</div>
+                            </div>
+                            <div class="project-tags">
+                                <span>Cisco Packet Tracer</span>
+                                <span>Routing</span>
+                                <span>VLAN</span>
+                                <span>DHCP Server</span>
+                                <span>DNS Server</span>
+                                <span>Web Server</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -890,5 +1002,6 @@
     <!-- Scripts -->
     <script src="js/main.js"></script>
     <script src="js/language.js"></script>
+    <script src="js/projects.js"></script>
 </body>
 </html>
