@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Project filter functionality with smooth fade in/out animation
+  // Project filter functionality with empty state management
   const filterBtns = document.querySelectorAll(".filter-btn")
   const projectCategories = document.querySelectorAll(".project-category")
+  const emptyState = document.getElementById("emptyState")
 
   // Mobile dropdown elements
   const dropdownToggle = document.getElementById("projectDropdown")
@@ -9,18 +10,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const dropdownItems = document.querySelectorAll(".dropdown-item")
   const selectedFilter = document.getElementById("selectedFilter")
 
-  // Initialize - show all categories on page load
+  // Track current active filter
+  let currentFilter = null
+
+  // Initialize - show empty state on page load
   initializeCategories()
 
   // Desktop filter functionality
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
       const filter = this.getAttribute("data-filter")
-      handleFilterChange(filter, this.textContent)
+      handleFilterChange(filter, this.textContent, this)
 
       // Update desktop buttons
       filterBtns.forEach((b) => b.classList.remove("active"))
-      this.classList.add("active")
+
+      // Toggle functionality - if clicking same filter, deactivate it
+      if (currentFilter === filter) {
+        currentFilter = null
+        showEmptyState()
+      } else {
+        this.classList.add("active")
+        currentFilter = filter
+      }
     })
   })
 
@@ -37,12 +49,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const filter = this.getAttribute("data-filter")
       const text = this.textContent
 
-      handleFilterChange(filter, text)
+      handleFilterChange(filter, text, this)
 
       // Update mobile dropdown
       dropdownItems.forEach((i) => i.classList.remove("active"))
-      this.classList.add("active")
-      selectedFilter.textContent = text
+
+      // Toggle functionality - if clicking same filter, deactivate it
+      if (currentFilter === filter) {
+        currentFilter = null
+        selectedFilter.textContent = "Pilih Kategori"
+        showEmptyState()
+      } else {
+        this.classList.add("active")
+        selectedFilter.textContent = text
+        currentFilter = filter
+      }
 
       // Close dropdown
       dropdownMenu.classList.remove("active")
@@ -64,10 +85,32 @@ document.addEventListener("DOMContentLoaded", () => {
       category.style.transform = "translateY(0)"
       category.classList.remove("fade-in", "fade-out")
     })
+    showEmptyState()
   }
 
-  // Improved filter change handler with smooth fade in
-  function handleFilterChange(filter, text) {
+  // Show empty state
+  function showEmptyState() {
+    emptyState.style.display = "block"
+    projectCategories.forEach((category) => {
+      category.style.display = "none"
+    })
+  }
+
+  // Hide empty state
+  function hideEmptyState() {
+    emptyState.style.display = "none"
+  }
+
+  // Improved filter change handler with empty state management
+  function handleFilterChange(filter, text, clickedElement) {
+    // If clicking the same filter, toggle it off
+    if (currentFilter === filter) {
+      return // Let the click handler manage the toggle
+    }
+
+    // Hide empty state when showing projects
+    hideEmptyState()
+
     // Reset all animation classes first
     projectCategories.forEach((category) => {
       category.classList.remove("fade-in", "fade-out")
