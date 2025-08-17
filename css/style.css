@@ -1157,6 +1157,28 @@ img {
     width: 12px;
     height: 12px;
   }
+  /* Center company info text on mobile only */
+  .company-header {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .company-info {
+    text-align: center;
+    width: 100%;
+  }
+
+  .company-info h3,
+  .company-duration,
+  .company-location {
+    text-align: center !important;
+  }
+
+  .company-location {
+    justify-content: center !important;
+  }
 }
 
 @media (max-width: 576px) {
