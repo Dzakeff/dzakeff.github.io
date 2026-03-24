@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
         subtitle: "Cyber Security & IT Enthusiast",
         downloadCV: "My CV",
         contactMe: "Contact Me",
-        cvPath: "/Documents/CV Muhamad Dzakwan Ar Efendi - English (Cyber).pdf",
+        cvPath: "/Documents/NewNew CV Muhamad Dzakwan Ar Efendi - English (Cyber).pdf",
       },
       profile: {
         title: "About Me",
         greeting: "Hi, I'm Muhamad Dzakwan Ar Efendi",
         description:
-          "I am an 18-year-old fresh graduate from Wikrama Bogor Vocational High School in 2025, majoring in Computer Network Engineering and Telecommunications. I have completed an internship for six months at PT Maxindo Mitra Solusi as a Technical Support, where I was responsible for needs assessment, installation, troubleshooting, and network maintenance. I am passionate about building a career in cyber security and system administration.",
+          "Cybersecurity and network security enthusiast with hands-on experience in network deployment, troubleshooting, and infrastructure security. Currently working as a Technical Support at PT Maxindo Mitra Solusi, handling network installations, onsite troubleshooting, and router hardening in production environments. Experienced in analyzing network traffic, implementing security configurations, and managing enterprise networking solutions. Seeking an opportunity to grow as a Security Analyst and contribute to threat detection and infrastructure security.",
         location: "Location",
         email: "Email",
         locationValue: "Bogor, Indonesia",
