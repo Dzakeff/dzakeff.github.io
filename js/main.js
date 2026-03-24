@@ -131,10 +131,10 @@ function calculateDuration(startDate) {
     return { years, months: remainingMonths, totalMonths: months }
 }
 
-function formatDuration(duration, lang = "id") {
+function formatDuration(duration, lang = "en") {
     const { years, months, totalMonths } = duration
     
-    if (lang === "id") {
+    if (lang === "en") {
         if (years > 0 && months > 0) {
             return `${years} thn ${months} bln`
         } else if (years > 0) {
@@ -153,12 +153,12 @@ function formatDuration(duration, lang = "id") {
     }
 }
 
-function formatStartDate(startDate, lang = "id") {
+function formatStartDate(startDate, lang = "en") {
     const date = new Date(startDate + "-01")
     const monthsID = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"]
     const monthsEN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     
-    const months = lang === "id" ? monthsID : monthsEN
+    const months = lang === "en" ? monthsID : monthsEN
     const month = months[date.getMonth()]
     const year = date.getFullYear()
     
@@ -166,8 +166,8 @@ function formatStartDate(startDate, lang = "id") {
 }
 
 function updateDynamicDurations() {
-    const lang = localStorage.getItem("language") || "id"
-    const presentText = lang === "id" ? "Sekarang" : "Present"
+    const lang = localStorage.getItem("language") || "en"
+    const presentText = lang === "en" ? "Sekarang" : "Present"
     
     const durationElements = document.querySelectorAll("[data-present='true']")
     
