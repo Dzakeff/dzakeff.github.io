@@ -5,7 +5,6 @@
   --dark-color: #2c3e50;
   --light-color: #ecf0f1;
   --danger-color: #e74c3c;
-  --success-color: #d1b3a5;
   --text-color: #333;
   --light-text-color: #666;
   --bg-color: #fff;
@@ -19,6 +18,7 @@
   --border-color-dark: #555;
   --bg-dark: #1a1a1a;
   --primary-color-rgb: 191, 122, 96;
+  --primary-hover-color: #1a1a1a;
 }
 
 .dark-theme {
@@ -36,6 +36,7 @@
   --card-bg-dark: #f2f2f2;
   --border-color-dark: #ddd;
   --bg-dark: #fff;
+  --primary-hover-color: #f4f4f4;
 }
 
 * {
@@ -48,18 +49,19 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Only transition theme-relevant properties on body, not everything */
 body {
   font-family: "Poppins", sans-serif;
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-color);
-  transition: var(--transition);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
   text-decoration: none;
   color: var(--primary-color);
-  transition: var(--transition);
+  transition: color 0.3s ease;
 }
 
 ul {
@@ -92,7 +94,7 @@ img {
   border-radius: var(--border-radius);
   font-weight: 500;
   cursor: pointer;
-  transition: var(--transition);
+  transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
   text-align: center;
 }
 
@@ -103,7 +105,7 @@ img {
 }
 
 .btn-primary:hover {
-  background-color: #000000;
+  background-color: var(--primary-hover-color);
   transform: translateY(-3px);
 }
 
@@ -136,6 +138,10 @@ img {
   color: var(--dark-color);
 }
 
+.section-description {
+  margin-top: 20px;
+}
+
 .underline {
   height: 4px;
   width: 70px;
@@ -152,7 +158,7 @@ img {
   width: 100%;
   z-index: 1000;
   background-color: transparent;
-  transition: var(--transition);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
   padding: 20px 0;
 }
 
@@ -203,7 +209,7 @@ img {
   width: 0;
   height: 2px;
   background-color: var(--primary-color);
-  transition: var(--transition);
+  transition: width 0.3s ease;
 }
 
 .nav-link:hover::after,
@@ -286,19 +292,6 @@ img {
   opacity: 0;
 }
 
-.scroll-down {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  animation: bounce 2s infinite;
-}
-
-.scroll-down a {
-  color: var(--dark-color);
-  font-size: 1.5rem;
-}
-
 /* Profile Section */
 .profile-content {
   display: grid;
@@ -311,7 +304,7 @@ img {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: var(--transition);
+  transition: transform 0.3s ease;
 }
 
 .profile-image:hover {
@@ -348,9 +341,43 @@ img {
   margin: 0;
 }
 
+/* Email button styling - subtle v2 */
+.email-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 6px 10px;
+    background-color: rgba(var(--primary-rgb), 0.1);
+    border-radius: 4px;
+}
+
+.email-btn:hover {
+    background-color: rgba(var(--primary-rgb), 0.2);
+    transform: translateX(3px);
+}
+
+.email-btn i {
+    font-size: 0.9rem;
+}
+
+/* Email highlight animation */
+@keyframes emailHighlight {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); background-color: rgba(var(--primary-rgb), 0.2); }
+    100% { transform: scale(1); }
+}
+
+.email-btn.highlight {
+    animation: emailHighlight 0.6s ease;
+}
+
 /* Social Item Styling */
 .social-item {
-  grid-column: 1 / -1; /* Span across all columns */
+  grid-column: 1 / -1;
 }
 
 .social-item .social-icons {
@@ -371,13 +398,18 @@ img {
   color: var(--dark-color);
   font-size: 1.2rem;
   box-shadow: var(--shadow);
-  transition: var(--transition);
+  transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
 }
 
 .social-icons a:hover {
   transform: translateY(-3px);
   color: var(--primary-color);
   background-color: var(--bg-color);
+}
+
+/* Social icons highlight animation */
+.social-icons a.highlight {
+    animation: emailHighlight 0.6s ease;
 }
 
 /* LinkedIn-style Experience Section */
@@ -481,12 +513,13 @@ img {
   box-shadow: 0 0 0 4px rgba(var(--primary-color-rgb), 0.2);
 }
 
+/* Dynamic timeline line — stretches to fill actual content height */
 .timeline-line {
   position: absolute;
   left: 50%;
   top: 18px;
+  bottom: -28px;
   width: 2px;
-  height: 80px;
   background: var(--border-color);
   transform: translateX(-50%);
 }
@@ -539,7 +572,7 @@ img {
   line-height: 1.6;
 }
 
-.position-description li:before {
+.position-description li::before {
   content: "•";
   position: absolute;
   left: 0;
@@ -622,7 +655,7 @@ img {
   color: var(--primary-color);
   border-radius: 25px;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 500;
   position: relative;
   overflow: hidden;
@@ -667,7 +700,30 @@ img {
   transform: translateY(0) !important;
 }
 
-.category-header {
+/* Unified grid for All Projects */
+.unified-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.unified-grid.fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.unified-grid.fade-out {
+    animation: fadeOut 0.3s ease forwards;
+}
+
+@media (max-width: 768px) {
+    .unified-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* .category-header {
   margin-bottom: 30px;
   text-align: center;
 }
@@ -683,7 +739,7 @@ img {
 
 .category-header i {
   color: var(--primary-color);
-}
+} */
 
 .projects-grid {
   display: grid;
@@ -696,7 +752,7 @@ img {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
@@ -713,7 +769,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: var(--transition);
+  transition: transform 0.3s ease;
 }
 
 .project-card:hover .project-image img {
@@ -732,7 +788,7 @@ img {
   justify-content: center;
   align-items: center;
   opacity: 0;
-  transition: var(--transition);
+  transition: opacity 0.3s ease;
 }
 
 .project-card:hover .overlay {
@@ -793,15 +849,6 @@ img {
   font-size: 0.8rem;
 }
 
-/* Coming Soon Project Card */
-.project-card.coming-soon {
-  opacity: 0.8;
-}
-
-.project-card.coming-soon .project-image {
-  filter: grayscale(50%);
-}
-
 /* Certificates Section */
 .certificates-grid {
   display: grid;
@@ -814,7 +861,7 @@ img {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: var(--transition);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .certificate-card:hover {
@@ -831,7 +878,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: var(--transition);
+  transition: transform 0.3s ease;
 }
 
 .certificate-card:hover .certificate-image img {
@@ -849,7 +896,7 @@ img {
   align-items: flex-end;
   padding: 20px;
   opacity: 0;
-  transition: var(--transition);
+  transition: opacity 0.3s ease;
 }
 
 .certificate-card:hover .overlay {
@@ -941,7 +988,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dropdown-toggle:hover {
@@ -970,7 +1017,7 @@ img {
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
   z-index: 100;
 }
 
@@ -1000,6 +1047,18 @@ img {
   color: white;
 }
 
+/* Scroll-based animation classes (replaces inline JS styles) */
+.animate-hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.animate-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Animations */
 @keyframes fadeInDown {
   from {
@@ -1024,11 +1083,7 @@ img {
 }
 
 @keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
+  0%, 20%, 50%, 80%, 100% {
     transform: translateY(0);
   }
   40% {
@@ -1085,7 +1140,7 @@ img {
     flex-direction: column;
     padding: 20px 0;
     box-shadow: var(--shadow);
-    transition: var(--transition);
+    transition: left 0.3s ease;
   }
 
   .nav-menu.active {
@@ -1101,7 +1156,7 @@ img {
     grid-template-columns: 1fr;
   }
 
-  /* Hide desktop filters and show mobile dropdown */
+  /* Hide desktop filters, show mobile dropdown */
   .project-filters {
     display: none;
   }
@@ -1116,7 +1171,7 @@ img {
     gap: 5px;
   }
 
-  /* Experience section mobile improvements */
+  /* Experience section — merged .company-header rule (was duplicated) */
   .experience-company {
     padding: 24px;
     margin-bottom: 24px;
@@ -1126,12 +1181,28 @@ img {
     flex-direction: column;
     gap: 16px;
     text-align: center;
+    align-items: center;
   }
 
   .company-logo {
     width: 56px;
     height: 56px;
     margin: 0 auto;
+  }
+
+  .company-info {
+    text-align: center;
+    width: 100%;
+  }
+
+  .company-info h3,
+  .company-duration {
+    text-align: center;
+  }
+
+  .company-location {
+    justify-content: center;
+    text-align: center;
   }
 
   .position-header {
@@ -1157,28 +1228,6 @@ img {
     width: 12px;
     height: 12px;
   }
-  /* Center company info text on mobile only */
-  .company-header {
-    flex-direction: column;
-    gap: 16px;
-    text-align: center;
-    align-items: center;
-  }
-
-  .company-info {
-    text-align: center;
-    width: 100%;
-  }
-
-  .company-info h3,
-  .company-duration,
-  .company-location {
-    text-align: center !important;
-  }
-
-  .company-location {
-    justify-content: center !important;
-  }
 }
 
 @media (max-width: 576px) {
@@ -1192,7 +1241,6 @@ img {
     grid-template-columns: 1fr;
   }
 
-  /* Mobile social icons styling - CENTER ALIGNED */
   .social-item .social-icons {
     justify-content: center;
     gap: 12px;
@@ -1210,7 +1258,6 @@ img {
     font-size: 0.9rem;
   }
 
-  /* Experience section mobile improvements */
   .experience-company {
     padding: 20px;
   }
@@ -1235,7 +1282,6 @@ img {
 }
 
 @media (max-width: 400px) {
-  /* Very small mobile social icons - STILL CENTERED */
   .social-item .social-icons {
     gap: 8px;
     justify-content: center;

@@ -1,180 +1,196 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Project filter functionality with empty state management
-  const filterBtns = document.querySelectorAll(".filter-btn")
-  const projectCategories = document.querySelectorAll(".project-category")
-  const emptyState = document.getElementById("emptyState")
+    const filterBtns = document.querySelectorAll(".filter-btn")
+    const projectCategories = document.querySelectorAll(".project-category")
+    const emptyState = document.getElementById("emptyState")
+    const unifiedGrid = document.getElementById("unifiedGrid")
 
-  // Mobile dropdown elements
-  const dropdownToggle = document.getElementById("projectDropdown")
-  const dropdownMenu = document.getElementById("dropdownMenu")
-  const dropdownItems = document.querySelectorAll(".dropdown-item")
-  const selectedFilter = document.getElementById("selectedFilter")
+    // Mobile dropdown elements
+    const dropdownToggle = document.getElementById("projectDropdown")
+    const dropdownMenu = document.getElementById("dropdownMenu")
+    const dropdownItems = document.querySelectorAll(".dropdown-item")
+    const selectedFilter = document.getElementById("selectedFilter")
 
-  // Track current active filter
-  let currentFilter = null
+    // Guard: exit early if required elements are missing
+    if (!dropdownToggle || !dropdownMenu) return
 
-  // Initialize - show empty state on page load
-  initializeCategories()
+    // Track current active filter
+    let currentFilter = "all"
 
-  // Desktop filter functionality
-  filterBtns.forEach((btn) => {
-    btn.addEventListener("click", function () {
-      const filter = this.getAttribute("data-filter")
-      handleFilterChange(filter, this.textContent, this)
+    // Initialize: show all projects on page load
+    initializeCategories()
 
-      // Update desktop buttons
-      filterBtns.forEach((b) => b.classList.remove("active"))
+    // Desktop filter buttons
+    filterBtns.forEach((btn) => {
+        btn.addEventListener("click", function () {
+            const filter = this.getAttribute("data-filter")
 
-      // Toggle functionality - if clicking same filter, deactivate it
-      if (currentFilter === filter) {
-        currentFilter = null
-        showEmptyState()
-      } else {
-        this.classList.add("active")
-        currentFilter = filter
-      }
+            if (currentFilter === filter) return
+
+            currentFilter = filter
+            filterBtns.forEach((b) => b.classList.remove("active"))
+            this.classList.add("active")
+            handleFilterChange(filter)
+        })
     })
-  })
 
-  // Mobile dropdown toggle
-  dropdownToggle.addEventListener("click", function (e) {
-    e.stopPropagation()
-    dropdownMenu.classList.toggle("active")
-    this.classList.toggle("active")
-  })
-
-  // Mobile dropdown item selection
-  dropdownItems.forEach((item) => {
-    item.addEventListener("click", function () {
-      const filter = this.getAttribute("data-filter")
-      const text = this.textContent
-
-      handleFilterChange(filter, text, this)
-
-      // Update mobile dropdown
-      dropdownItems.forEach((i) => i.classList.remove("active"))
-
-      // Toggle functionality - if clicking same filter, deactivate it
-      if (currentFilter === filter) {
-        currentFilter = null
-        selectedFilter.textContent = "Pilih Kategori"
-        showEmptyState()
-      } else {
-        this.classList.add("active")
-        selectedFilter.textContent = text
-        currentFilter = filter
-      }
-
-      // Close dropdown
-      dropdownMenu.classList.remove("active")
-      dropdownToggle.classList.remove("active")
+    // Mobile dropdown toggle
+    dropdownToggle.addEventListener("click", function (e) {
+        e.stopPropagation()
+        dropdownMenu.classList.toggle("active")
+        this.classList.toggle("active")
     })
-  })
 
-  // Close dropdown when clicking outside
-  document.addEventListener("click", () => {
-    dropdownMenu.classList.remove("active")
-    dropdownToggle.classList.remove("active")
-  })
+    // Mobile dropdown item selection
+    dropdownItems.forEach((item) => {
+        item.addEventListener("click", function () {
+            const filter = this.getAttribute("data-filter")
+            const text = this.textContent
 
-  // Initialize categories on page load
-  function initializeCategories() {
-    projectCategories.forEach((category) => {
-      category.style.display = "none"
-      category.style.opacity = "1"
-      category.style.transform = "translateY(0)"
-      category.classList.remove("fade-in", "fade-out")
+            dropdownMenu.classList.remove("active")
+            dropdownToggle.classList.remove("active")
+
+            if (currentFilter === filter) return
+
+            currentFilter = filter
+            dropdownItems.forEach((i) => i.classList.remove("active"))
+            this.classList.add("active")
+            if (selectedFilter) selectedFilter.textContent = text
+            handleFilterChange(filter)
+        })
     })
-    showEmptyState()
-  }
 
-  // Show empty state
-  function showEmptyState() {
-    emptyState.style.display = "block"
-    projectCategories.forEach((category) => {
-      category.style.display = "none"
+    // Close dropdown when clicking outside
+    document.addEventListener("click", () => {
+        if (dropdownMenu) dropdownMenu.classList.remove("active")
+        if (dropdownToggle) dropdownToggle.classList.remove("active")
     })
-  }
 
-  // Hide empty state
-  function hideEmptyState() {
-    emptyState.style.display = "none"
-  }
-
-  // Improved filter change handler with empty state management
-  function handleFilterChange(filter, text, clickedElement) {
-    // If clicking the same filter, toggle it off
-    if (currentFilter === filter) {
-      return // Let the click handler manage the toggle
+    // Build unified grid with all project cards
+    function buildUnifiedGrid() {
+        if (!unifiedGrid) return
+        
+        unifiedGrid.innerHTML = ""
+        
+        // Clone all project cards from all categories
+        projectCategories.forEach((category) => {
+            const cards = category.querySelectorAll(".project-card")
+            cards.forEach((card) => {
+                const clonedCard = card.cloneNode(true)
+                unifiedGrid.appendChild(clonedCard)
+            })
+        })
     }
 
-    // Hide empty state when showing projects
-    hideEmptyState()
+    function initializeCategories() {
+        // Hide empty state
+        if (emptyState) emptyState.style.display = "none"
 
-    // Reset all animation classes first
-    projectCategories.forEach((category) => {
-      category.classList.remove("fade-in", "fade-out")
-    })
+        // Build unified grid
+        buildUnifiedGrid()
 
-    // Get currently visible categories
-    const visibleCategories = Array.from(projectCategories).filter(
-      (category) => category.style.display !== "none" && window.getComputedStyle(category).display !== "none",
-    )
+        // Show unified grid, hide individual categories
+        if (unifiedGrid) {
+            unifiedGrid.style.display = "grid"
+            unifiedGrid.style.opacity = "1"
+        }
 
-    // If there are visible categories, fade them out first
-    if (visibleCategories.length > 0) {
-      visibleCategories.forEach((category) => {
-        category.classList.add("fade-out")
-      })
+        projectCategories.forEach((category) => {
+            category.style.display = "none"
+        })
 
-      // Wait for fade out to complete, then show new categories
-      setTimeout(() => {
-        showCategories(filter)
-      }, 400) // Wait for fade out to complete
-    } else {
-      // No visible categories, show immediately
-      showCategories(filter)
+        // Set "all" filter as active
+        filterBtns.forEach((btn) => {
+            if (btn.getAttribute("data-filter") === "all") {
+                btn.classList.add("active")
+            } else {
+                btn.classList.remove("active")
+            }
+        })
+
+        dropdownItems.forEach((item) => {
+            if (item.getAttribute("data-filter") === "all") {
+                item.classList.add("active")
+            } else {
+                item.classList.remove("active")
+            }
+        })
+
+        // Update dropdown text
+        if (selectedFilter) {
+            const lang = localStorage.getItem("language") || "id"
+            selectedFilter.textContent = lang === "id" ? "Semua Proyek" : "All Projects"
+        }
     }
-  }
 
-  // Function to show categories with smooth fade in
-  function showCategories(filter) {
-    projectCategories.forEach((category) => {
-      const categoryType = category.getAttribute("data-category")
+    function handleFilterChange(filter) {
+        // Hide empty state
+        if (emptyState) emptyState.style.display = "none"
 
-      // Reset classes
-      category.classList.remove("fade-in", "fade-out")
+        if (filter === "all") {
+            // Fade out individual categories, show unified grid
+            projectCategories.forEach((cat) => {
+                cat.classList.add("fade-out")
+            })
 
-      if (filter === "all") {
-        // Show all categories with smooth fade in
-        category.style.display = "block"
-        category.style.opacity = "0" // Start invisible
-        category.style.transform = "translateY(20px)" // Start from below
+            setTimeout(() => {
+                projectCategories.forEach((cat) => {
+                    cat.style.display = "none"
+                    cat.classList.remove("fade-out")
+                })
 
-        // Use requestAnimationFrame to ensure display is applied
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            category.classList.add("fade-in")
-          })
-        })
-      } else if (filter === categoryType) {
-        // Show specific category with smooth fade in
-        category.style.display = "block"
-        category.style.opacity = "0" // Start invisible
-        category.style.transform = "translateY(20px)" // Start from below
+                if (unifiedGrid) {
+                    unifiedGrid.style.display = "grid"
+                    unifiedGrid.style.opacity = "0"
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            unifiedGrid.classList.add("fade-in")
+                            unifiedGrid.style.opacity = "1"
+                        })
+                    })
+                    setTimeout(() => unifiedGrid.classList.remove("fade-in"), 400)
+                }
+            }, 300)
+        } else {
+            // Fade out unified grid (if visible) or other categories
+            if (unifiedGrid && unifiedGrid.style.display !== "none") {
+                unifiedGrid.classList.add("fade-out")
+            }
 
-        // Use requestAnimationFrame to ensure display is applied
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            category.classList.add("fade-in")
-          })
-        })
-      } else {
-        // Hide category
-        category.style.display = "none"
-        category.style.opacity = ""
-        category.style.transform = ""
-      }
-    })
-  }
+            projectCategories.forEach((cat) => {
+                if (cat.style.display !== "none") {
+                    cat.classList.add("fade-out")
+                }
+            })
+
+            setTimeout(() => {
+                // Hide unified grid
+                if (unifiedGrid) {
+                    unifiedGrid.style.display = "none"
+                    unifiedGrid.classList.remove("fade-out")
+                }
+
+                // Hide all categories first
+                projectCategories.forEach((cat) => {
+                    cat.style.display = "none"
+                    cat.classList.remove("fade-out")
+                })
+
+                // Show only selected category
+                projectCategories.forEach((category) => {
+                    const categoryType = category.getAttribute("data-category")
+                    if (filter === categoryType) {
+                        category.style.display = "block"
+                        category.style.opacity = "0"
+                        requestAnimationFrame(() => {
+                            requestAnimationFrame(() => {
+                                category.classList.add("fade-in")
+                                category.style.opacity = "1"
+                            })
+                        })
+                        setTimeout(() => category.classList.remove("fade-in"), 400)
+                    }
+                })
+            }, 300)
+        }
+    }
 })
