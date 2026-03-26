@@ -300,7 +300,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (cvDownloadBtn) {
       cvDownloadBtn.setAttribute("href", l.hero.cvPath)
       cvDownloadBtn.setAttribute("download", lang === "en"
-        ? "CV Muhamad Dzakwan Ar Efendi - English (Cyber).pdf"
+        ? "New CV Muhamad Dzakwan Ar Efendi - English (Cyber).pdf"
         : "CV Muhamad Dzakwan Ar Efendi - Indonesia (Cyber).pdf"
       )
     }
@@ -380,6 +380,9 @@ document.addEventListener("DOMContentLoaded", () => {
     updateProjectCards("idnetworkers", l.projects.projectTitles.idnetworkers, l.projects.idNetworkersProjects, l.projects.project, lang)
     updateProjectCards("wikrama", l.projects.projectTitles.wikrama, l.projects.wikramaProjects, l.projects.project, lang)
 
+    // Rebuild sorted grid after translation so cloned cards get updated text
+    if (typeof window.rebuildSortedGrid === "function") window.rebuildSortedGrid()
+
     // Certificates
     safeSetText("#certificates .section-header h2", l.certificates.title)
     safeSetText("#certificates .section-description", l.certificates.description)
@@ -402,10 +405,11 @@ document.addEventListener("DOMContentLoaded", () => {
       footerText.innerHTML = `&copy; <span id="current-year"></span> Dzakwan Efendi. ${l.footer.rights}`
       const yearEl = document.getElementById("current-year")
       if (yearEl) yearEl.textContent = new Date().getFullYear()
-    
-    if (typeof updateDynamicDurations === "function") {
-    updateDynamicDurations()
-      }
+    }
+
+    // Update dynamic durations after language switch
+    if (typeof window.updateDynamicDurations === "function") {
+      window.updateDynamicDurations()
     }
   }
 

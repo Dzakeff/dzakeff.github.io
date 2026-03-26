@@ -4,26 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const emptyState = document.getElementById("emptyState")
     const unifiedGrid = document.getElementById("unifiedGrid")
 
-    // Mobile dropdown elements
     const dropdownToggle = document.getElementById("projectDropdown")
     const dropdownMenu = document.getElementById("dropdownMenu")
     const dropdownItems = document.querySelectorAll(".dropdown-item")
     const selectedFilter = document.getElementById("selectedFilter")
 
-    // Guard: exit early if required elements are missing
     if (!dropdownToggle || !dropdownMenu) return
 
-    // Track current active filter
     let currentFilter = "all"
 
-    // Initialize: show all projects on page load
+    // Initialize: show all projects sorted by year
     initializeCategories()
 
-    // Desktop filter buttons
+    // ─── Desktop filter buttons ───────────────────────────────────────────
     filterBtns.forEach((btn) => {
         btn.addEventListener("click", function () {
             const filter = this.getAttribute("data-filter")
-
             if (currentFilter === filter) return
 
             currentFilter = filter
@@ -33,14 +29,13 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     })
 
-    // Mobile dropdown toggle
+    // ─── Mobile dropdown ──────────────────────────────────────────────────
     dropdownToggle.addEventListener("click", function (e) {
         e.stopPropagation()
         dropdownMenu.classList.toggle("active")
         this.classList.toggle("active")
     })
 
-    // Mobile dropdown item selection
     dropdownItems.forEach((item) => {
         item.addEventListener("click", function () {
             const filter = this.getAttribute("data-filter")
@@ -59,63 +54,51 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     })
 
-    // Close dropdown when clicking outside
     document.addEventListener("click", () => {
         if (dropdownMenu) dropdownMenu.classList.remove("active")
         if (dropdownToggle) dropdownToggle.classList.remove("active")
     })
 
-    // Build unified grid with all project cards
-    function buildUnifiedGrid() {
+    // ─── Build unified grid sorted by year (newest first) ─────────────────
+    function buildSortedGrid() {
         if (!unifiedGrid) return
-        
-        unifiedGrid.innerHTML = ""
-        
-        // Clone all project cards from all categories
+
+        // Collect all project cards from all categories
+        const allCards = []
         projectCategories.forEach((category) => {
-            const cards = category.querySelectorAll(".project-card")
-            cards.forEach((card) => {
-                const clonedCard = card.cloneNode(true)
-                unifiedGrid.appendChild(clonedCard)
+            category.querySelectorAll(".project-card").forEach((card) => {
+                allCards.push(card.cloneNode(true))
             })
         })
+
+        // Sort by data-year descending (newest first)
+        allCards.sort((a, b) => {
+            const yearA = parseInt(a.getAttribute("data-year") || "0")
+            const yearB = parseInt(b.getAttribute("data-year") || "0")
+            return yearB - yearA
+        })
+
+        // Clear and re-render
+        unifiedGrid.innerHTML = ""
+        allCards.forEach((card) => unifiedGrid.appendChild(card))
     }
 
+    // ─── Helpers ──────────────────────────────────────────────────────────
     function initializeCategories() {
-        // Hide empty state
         if (emptyState) emptyState.style.display = "none"
 
-        // Build unified grid
-        buildUnifiedGrid()
+        // Build sorted grid and show it
+        buildSortedGrid()
+        showAllView(false)
 
-        // Show unified grid, hide individual categories
-        if (unifiedGrid) {
-            unifiedGrid.style.display = "grid"
-            unifiedGrid.style.opacity = "1"
-        }
-
-        projectCategories.forEach((category) => {
-            category.style.display = "none"
-        })
-
-        // Set "all" filter as active
+        // Set "all" as active
         filterBtns.forEach((btn) => {
-            if (btn.getAttribute("data-filter") === "all") {
-                btn.classList.add("active")
-            } else {
-                btn.classList.remove("active")
-            }
+            btn.classList.toggle("active", btn.getAttribute("data-filter") === "all")
         })
-
         dropdownItems.forEach((item) => {
-            if (item.getAttribute("data-filter") === "all") {
-                item.classList.add("active")
-            } else {
-                item.classList.remove("active")
-            }
+            item.classList.toggle("active", item.getAttribute("data-filter") === "all")
         })
 
-        // Update dropdown text
         if (selectedFilter) {
             const lang = localStorage.getItem("language") || "id"
             selectedFilter.textContent = lang === "id" ? "Semua Proyek" : "All Projects"
@@ -123,74 +106,98 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function handleFilterChange(filter) {
-        // Hide empty state
         if (emptyState) emptyState.style.display = "none"
 
-        if (filter === "all") {
-            // Fade out individual categories, show unified grid
-            projectCategories.forEach((cat) => {
-                cat.classList.add("fade-out")
-            })
+        // Fade out currently visible elements
+        const visibleEls = []
+        if (unifiedGrid && unifiedGrid.style.display !== "none") visibleEls.push(unifiedGrid)
+        projectCategories.forEach((cat) => {
+            if (cat.style.display !== "none") visibleEls.push(cat)
+        })
 
+        if (visibleEls.length > 0) {
+            visibleEls.forEach((el) => el.classList.add("fade-out"))
             setTimeout(() => {
-                projectCategories.forEach((cat) => {
-                    cat.style.display = "none"
-                    cat.classList.remove("fade-out")
-                })
-
-                if (unifiedGrid) {
-                    unifiedGrid.style.display = "grid"
-                    unifiedGrid.style.opacity = "0"
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                            unifiedGrid.classList.add("fade-in")
-                            unifiedGrid.style.opacity = "1"
-                        })
-                    })
-                    setTimeout(() => unifiedGrid.classList.remove("fade-in"), 400)
-                }
+                visibleEls.forEach((el) => el.classList.remove("fade-out"))
+                applyFilter(filter)
             }, 300)
         } else {
-            // Fade out unified grid (if visible) or other categories
-            if (unifiedGrid && unifiedGrid.style.display !== "none") {
-                unifiedGrid.classList.add("fade-out")
-            }
-
-            projectCategories.forEach((cat) => {
-                if (cat.style.display !== "none") {
-                    cat.classList.add("fade-out")
-                }
-            })
-
-            setTimeout(() => {
-                // Hide unified grid
-                if (unifiedGrid) {
-                    unifiedGrid.style.display = "none"
-                    unifiedGrid.classList.remove("fade-out")
-                }
-
-                // Hide all categories first
-                projectCategories.forEach((cat) => {
-                    cat.style.display = "none"
-                    cat.classList.remove("fade-out")
-                })
-
-                // Show only selected category
-                projectCategories.forEach((category) => {
-                    const categoryType = category.getAttribute("data-category")
-                    if (filter === categoryType) {
-                        category.style.display = "block"
-                        category.style.opacity = "0"
-                        requestAnimationFrame(() => {
-                            requestAnimationFrame(() => {
-                                category.classList.add("fade-in")
-                                category.style.opacity = "1"
-                            })
-                        })
-                        setTimeout(() => category.classList.remove("fade-in"), 400)
-                    }
-                })
-            }, 300)
+            applyFilter(filter)
         }
     }
+
+    function applyFilter(filter) {
+        if (filter === "all") {
+            // Rebuild sorted grid (in case language changed the cloned cards)
+            buildSortedGrid()
+            showAllView(true)
+        } else {
+            hideAllView()
+            showCategory(filter, true)
+        }
+    }
+
+    function showAllView(animate) {
+        if (!unifiedGrid) return
+        hideCategories()
+        unifiedGrid.style.display = "grid"
+
+        if (animate) {
+            unifiedGrid.style.opacity = "0"
+            unifiedGrid.style.transform = "translateY(20px)"
+            requestAnimationFrame(() => requestAnimationFrame(() => {
+                unifiedGrid.classList.add("fade-in")
+                unifiedGrid.style.opacity = "1"
+                unifiedGrid.style.transform = "translateY(0)"
+            }))
+            setTimeout(() => unifiedGrid.classList.remove("fade-in"), 400)
+        } else {
+            unifiedGrid.style.opacity = "1"
+            unifiedGrid.style.transform = "translateY(0)"
+        }
+    }
+
+    function hideAllView() {
+        if (!unifiedGrid) return
+        unifiedGrid.style.display = "none"
+        unifiedGrid.style.opacity = ""
+        unifiedGrid.style.transform = ""
+        unifiedGrid.classList.remove("fade-in", "fade-out")
+    }
+
+    function hideCategories() {
+        projectCategories.forEach((cat) => {
+            cat.style.display = "none"
+            cat.style.opacity = ""
+            cat.style.transform = ""
+            cat.classList.remove("fade-in", "fade-out")
+        })
+    }
+
+    function showCategory(filter, animate) {
+        projectCategories.forEach((category) => {
+            const type = category.getAttribute("data-category")
+            if (type === filter) {
+                category.style.display = "block"
+                if (animate) {
+                    category.style.opacity = "0"
+                    category.style.transform = "translateY(20px)"
+                    requestAnimationFrame(() => requestAnimationFrame(() => {
+                        category.classList.add("fade-in")
+                        category.style.opacity = "1"
+                        category.style.transform = "translateY(0)"
+                    }))
+                    setTimeout(() => category.classList.remove("fade-in"), 400)
+                } else {
+                    category.style.opacity = "1"
+                    category.style.transform = "translateY(0)"
+                }
+            } else {
+                category.style.display = "none"
+            }
+        })
+    }
+
+    // Expose rebuild for language.js to call after translation updates
+    window.rebuildSortedGrid = buildSortedGrid
 })

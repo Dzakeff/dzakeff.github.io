@@ -131,18 +131,10 @@ function calculateDuration(startDate) {
     return { years, months: remainingMonths, totalMonths: months }
 }
 
-function formatDuration(duration, lang = "en") {
+function formatDuration(duration, lang = "id") {
     const { years, months, totalMonths } = duration
     
-    if (lang === "en") {
-        if (years > 0 && months > 0) {
-            return `${years} thn ${months} bln`
-        } else if (years > 0) {
-            return `${years} thn`
-        } else {
-            return `${totalMonths} bln`
-        }
-    } else {
+    if (lang === "id") {
         if (years > 0 && months > 0) {
             return `${years} yr ${months} mos`
         } else if (years > 0) {
@@ -150,15 +142,23 @@ function formatDuration(duration, lang = "en") {
         } else {
             return `${totalMonths} mos`
         }
+    } else {
+        if (years > 0 && months > 0) {
+            return `${years} thn ${months} bln`
+        } else if (years > 0) {
+            return `${years} thn`
+        } else {
+            return `${totalMonths} bln`
+        }
     }
 }
 
-function formatStartDate(startDate, lang = "en") {
+function formatStartDate(startDate, lang = "id") {
     const date = new Date(startDate + "-01")
     const monthsID = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"]
     const monthsEN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     
-    const months = lang === "en" ? monthsID : monthsEN
+    const months = lang === "id" ? monthsEN : monthsID
     const month = months[date.getMonth()]
     const year = date.getFullYear()
     
@@ -166,8 +166,8 @@ function formatStartDate(startDate, lang = "en") {
 }
 
 function updateDynamicDurations() {
-    const lang = localStorage.getItem("language") || "en"
-    const presentText = lang === "en" ? "Sekarang" : "Present"
+    const lang = localStorage.getItem("language") || "id"
+    const presentText = lang === "id" ? "Present" : "Sekarang"
     
     const durationElements = document.querySelectorAll("[data-present='true']")
     
