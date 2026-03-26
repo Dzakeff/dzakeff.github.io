@@ -409,7 +409,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Update dynamic durations after language switch
     if (typeof window.updateDynamicDurations === "function") {
-      window.updateDynamicDurations()
+      window.updateDynamicDurations(lang)
     }
   }
 

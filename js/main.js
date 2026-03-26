@@ -116,14 +116,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Dynamic duration calculator
 function calculateDuration(startDate) {
-    const start = new Date(startDate + "-01") // Add day for valid date
+    let dateStr = startDate;
+    if (!dateStr.includes('-') || dateStr.split('-').length < 3) {
+        dateStr += "-01";
+    }
+    const start = new Date(dateStr)
     const now = new Date()
     
-    let months = (now.getFullYear() - start.getFullYear()) * 12
-    months += now.getMonth() - start.getMonth()
+    let months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth())
     
-    // Ensure at least 1 month
-    if (months < 1) months = 1
+    // Adjust if current day is before start day in the month
+    if (now.getDate() < start.getDate()) {
+        months -= 1
+    }
+    
+    // Ensure at least 1 month if start is in the past
+    if (months < 1 && now > start) months = 1
     
     const years = Math.floor(months / 12)
     const remainingMonths = months % 12
@@ -134,7 +142,7 @@ function calculateDuration(startDate) {
 function formatDuration(duration, lang = "id") {
     const { years, months, totalMonths } = duration
     
-    if (lang === "id") {
+    if (lang === "en") {
         if (years > 0 && months > 0) {
             return `${years} yr ${months} mos`
         } else if (years > 0) {
@@ -154,20 +162,24 @@ function formatDuration(duration, lang = "id") {
 }
 
 function formatStartDate(startDate, lang = "id") {
-    const date = new Date(startDate + "-01")
+    let dateStr = startDate;
+    if (!dateStr.includes('-') || dateStr.split('-').length < 3) {
+        dateStr += "-01";
+    }
+    const date = new Date(dateStr)
     const monthsID = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"]
     const monthsEN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     
-    const months = lang === "id" ? monthsEN : monthsID
+    const months = lang === "en" ? monthsEN : monthsID
     const month = months[date.getMonth()]
     const year = date.getFullYear()
     
     return `${month} ${year}`
 }
 
-function updateDynamicDurations() {
-    const lang = localStorage.getItem("language") || "id"
-    const presentText = lang === "id" ? "Present" : "Sekarang"
+function updateDynamicDurations(lang = null) {
+    if (!lang) lang = localStorage.getItem("language") || "id"
+    const presentText = lang === "en" ? "Present" : "Sekarang"
     
     const durationElements = document.querySelectorAll("[data-present='true']")
     
